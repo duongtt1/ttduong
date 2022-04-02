@@ -16,15 +16,6 @@ organizations:
 # Short bio (displayed in user profile at end of posts)
 bio: 
 
-interests:
-- Embedded Automotive
-- Computer Vision
-
-education:
-  courses:
-  - course: BSc in Computer Engineering
-    institution: University of Information Technology
-    year: 2018
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
