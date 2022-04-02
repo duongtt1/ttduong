@@ -10,7 +10,7 @@ role: Embedded Software Developer
 
 # Organizations/Affiliations
 organizations:
-- name: ĐH CNTT - ĐHQGHCM
+- name: ĐH CNTT - ĐHQG HCM
   url: "https://www.uit.edu.vn/"
 
 # Short bio (displayed in user profile at end of posts)
