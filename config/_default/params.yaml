@@ -41,7 +41,7 @@ header:
 
 footer:
   copyright:
-    notice: '© {year} Duoq. This work is licensed under {license}'
+    notice: '© {year} Kitaro. This work is licensed under {license}'
     license:
       enable: true
       allow_derivatives: false

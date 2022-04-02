@@ -25,7 +25,7 @@ content:
       captcha: false
 
   # Contact details (edit or remove options as required)
-  email: duongdaidot68@gmail.com
+  email: kitaroabe@gmail.com
 
 design:
   columns: '2'
