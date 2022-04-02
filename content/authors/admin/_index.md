@@ -37,7 +37,4 @@ social:
 # Enter email to display Gravatar (if Gravatar enabled in Config)
 email: "duongdaidot68@gmail.com"
 ---
-
-My research interests include the areas of Embedded Automotive and Computer Vision.
-
-I am passionate working on the embedded systems in cars. My dream is to dedicate myself to the development of Vietnam.
+Tôi có 2 ước mơ: - Gia đình hạnh phúc - Tổ quốc hùng cường
