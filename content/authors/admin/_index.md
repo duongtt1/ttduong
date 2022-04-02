@@ -10,7 +10,7 @@ role: Embedded Software Developer
 
 # Organizations/Affiliations
 organizations:
-- name: University of Information Technology - VNUHCM
+- name: UIT - VNUHCM
   url: "https://www.uit.edu.vn/"
 
 # Short bio (displayed in user profile at end of posts)
