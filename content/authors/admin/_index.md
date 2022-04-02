@@ -47,6 +47,6 @@ social:
 email: "duongdaidot68@gmail.com"
 ---
 
-My research interests include the areas of Embedded Automotive and Computer Vision. I am passionate working on the embedded systems in cars. My dream is to dedicate myself to the development of Vietnam.
+My research interests include the areas of Embedded Automotive and Computer Vision.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+I am passionate working on the embedded systems in cars. My dream is to dedicate myself to the development of Vietnam.
