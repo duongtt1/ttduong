@@ -37,4 +37,4 @@ social:
 email: "duongdaidot68@gmail.com"
 ---
 
-Tôi có 2 ước mơ. Một là gia đình hạnh phúc, hai là gổ quốc hùng cường.
+Tôi chủ yếu học và tham gia tìm tòi kiến thức chủ yếu nằm trong 2 mảng chính là Embedded Automotive và Computer Vision. Blog này được sinh ra với mục đích đơn thuần chỉ là 1 nơi để tôi ghi chú lại những kinh nghiệm hoặc những gì tôi cho là cần thiết trong lúc học và làm việc với các ngôn ngữ và công cụ lập trình. Vì vậy chắc chắn sẽ không thể tránh khỏi những thiếu sót hoặc lỗi sai, tôi rất vui nếu như nó có thể giúp ích được gì đó cho bạn NHƯNG làm ơn hãy lưu ý ĐỪNG TIN rằng 100% những gì tôi viết là sẽ đúng. Bởi vì chính tôi cũng không chắc chắn việc đó. Tôi xin nhắc lại 1 lần nữa Blog này đơn thuần chỉ là 1 nơi để tôi ghi chú lại theo cảm tính cá nhân.
