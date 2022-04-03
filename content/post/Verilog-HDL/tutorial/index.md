@@ -55,4 +55,4 @@ Khi Verilog ra đời đã tạo ra 1 làn sóng mới trong việc thiết kế
 
 ## Block diagram of arbiter
 
-![Aribiter Signal!](/content/post/Verilog-HDL/tutorial/images/aribiter_signal.png "Aribiter Signal")
+![Aribiter Signal!](./images/aribiter_signal.png "Aribiter Signal")
