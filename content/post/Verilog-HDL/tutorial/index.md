@@ -1,9 +1,9 @@
 ---
-title: Giới thiệu Verilog-HDL 
+title: Giới thiệu Verilog-HDL (P1)
 subtitle: Verilog là ngôn ngữ mô tả phần cứng được sử dụng để mô hình hóa các hệ thống điện tử. Nó được sử dụng phổ biến nhất trong thiết kế và xác minh các mạch kỹ thuật số ở trừu tượng mức chuyển thanh ghi.
 
 # Summary for listings and search engines
-summary: Verilog, được tiêu chuẩn hóa thành IEEE 1364, là ngôn ngữ mô tả phần cứng (hardware description language, viết tắt là HDL) được sử dụng để mô hình hóa các hệ thống điện tử. Nó được sử dụng phổ biến nhất trong thiết kế và xác minh các mạch kỹ thuật số ở trừu tượng mức chuyển thanh ghi. Nó cũng được sử dụng trong việc xác minh các mạch tương tự và mạch tín hiệu hỗn hợp, cũng như trong thiết kế các mạch di truyền.
+summary: Verilog là ngôn ngữ mô tả phần cứng (hardware description language, viết tắt là HDL) được sử dụng để mô hình hóa các hệ thống điện tử. Nó được sử dụng phổ biến nhất trong thiết kế và xác minh các mạch kỹ thuật số ở trừu tượng mức chuyển thanh ghi. Nó cũng được sử dụng trong việc xác minh các mạch tương tự và mạch tín hiệu hỗn hợp, cũng như trong thiết kế các mạch di truyền.
 
 # Link this post with a project
 projects: []
@@ -38,7 +38,7 @@ categories:
 - Verilog-HDL
 ---
 
-## Overview
+### **Overview**
 
 Verilog, được tiêu chuẩn hóa thành IEEE 1364, là ngôn ngữ mô tả phần cứng (hardware description language, viết tắt: HDL) được sử dụng để mô hình hóa các hệ thống điện tử. Nó được sử dụng phổ biến nhất trong thiết kế và xác minh các mạch kỹ thuật số ở trừu tượng mức chuyển thanh ghi. Nó cũng được sử dụng trong việc xác minh các mạch tương tự và mạch tín hiệu hỗn hợp, cũng như trong thiết kế các mạch di truyền. Vào năm 2009, tiêu chuẩn Verilog (IEEE 1364-2005) đã được hợp nhất vào tiêu chuẩn SystemVerilog, tạo ra tiêu chuẩn IEEE 1800-2009. Kể từ đó, Verilog chính thức là một phần của ngôn ngữ SystemVerilog. Phiên bản hiện tại là tiêu chuẩn IEEE 1800-2017.
 
@@ -53,6 +53,13 @@ Khi Verilog ra đời đã tạo ra 1 làn sóng mới trong việc thiết kế
 5. Verification
 6. Synthesis
 
-## Block diagram of arbiter
+### **Block diagram of arbiter**
 
 ![Aribiter Signal!](./images/aribiter_signal.png "Aribiter Signal")
+
+Nếu  muốn thiết kế máy trạng thái như trên mà không sử dụng Verilog thì thường chúng ta sẽ phải vẽ 1 máy trạng thái, từ đây chúng ta sẽ lập ra bảng sự thật với các chuyển đổi trạng thái cho mỗi con Flip-Flop. Sau đó thực hiện vẽ bìa Karnaugh từ bìa Karnaugh chúng ta có thể đơn giản các cổng luận lý và cuối cùng ra được mạch. Cách làm này ở những mạch nhỏ thì vẫn có thể ổn, nhưng khi mạch trở nên phức tạp thì cách làm này trở nên phức tạp và tiềm ẩn nhiều lỗi phát sinh. Và rồi Verilog ra đời và cho chúng ta 1 hướng tiếp cận khác để thiết kế mạch, chi tiết hơn thì chúng ta cùng đi tới phần tiếp theo.
+
+### **Low level design**
+
+
+
