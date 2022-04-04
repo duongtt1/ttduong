@@ -53,7 +53,9 @@ Khi Verilog ra đời đã tạo ra 1 làn sóng mới trong việc thiết kế
 5. Verification
 6. Synthesis
 
-### **Block diagram of arbiter**
+Ở những phần tiếp theo chúng ta sẽ cùng nhau đi xây dựng khối Aribiter. Nếu bạn chưa biết khối Aribiter là cái gì ? thì nên đọc qua trước bài viết này trước [Tìm hiểu về round robin arbiter - semiconvn.com](https://www.semiconvn.com/home/hoc-thiet-ke-vi-mach/bai-hc-vi-mch/12787-tim-hiu-v-round-robin-arbiter.html) sau đó có thể quay lại để đọc tiếp vì phần sau sẽ không tập trung vào giải thích kỹ lưỡng về chức năng của khối này mà chỉ nói sơ qua chủ yếu tập trung đến việc xây dựng nó bằng verilog.
+
+### **Block diagram của khối Arbiter**
 
 ![Aribiter Signal!](./images/aribiter_signal.png "Aribiter Signal")
 
@@ -61,5 +63,17 @@ Nếu  muốn thiết kế máy trạng thái như trên mà không sử dụng 
 
 ### **Low level design**
 
+Để xem cách Verilog giúp chúng ta thiết kế Aribiter như thế nào thì trước tiên chúng ta sẽ cùng nhau xem qua sơ đồ máy trạng thái của nó.
 
+![FSM Aribiter!](./images/aribiter_fsm.png "FSM Aribiter")
 
+Mỗi vòng tròn đại diện cho một trạng thái. Mỗi trạng thái tương ứng với một đầu ra. Các mũi tên giữa các trạng thái tức là chuyển đổi trạng thái, được gắn nhãn bởi sự kiện gây ra chuyển đổi.
+
+Ví dụ: mũi tên màu cam ngoài cùng bên trái có nghĩa là nếu máy ở trạng thái GNT0 (xuất tín hiệu tương ứng với GNT0) và nhận đầu vào là !Req_0 máy sẽ chuyển sang trạng thái IDLE và xuất tín hiệu tương ứng với trạng thái IDLE.
+
+Máy trạng thái này mô tả tất cả logic của hệ thống mà bạn cần để có thể tự tay thiết kế ra mạch Aribiter dựa trên các cổng luận lý số (AND, OR, XOR, NOT,...). Nhưng mà nội dung chính của chúng ta là Verilog nên bước tiếp theo chúng ta sẽ xây dựng nó bằng Verilog ở phần số 2 của seri này.
+
+### Nguồn tham khảo
+
+* [Verilog In One Day Part-I](https://www.asic-world.com/verilog/verilog_one_day1.html#Introduction)
+* [Tìm hiểu về round robin arbiter - semiconvn.com](https://www.semiconvn.com/home/hoc-thiet-ke-vi-mach/bai-hc-vi-mch/12787-tim-hiu-v-round-robin-arbiter.html)
