@@ -14,7 +14,7 @@ organizations:
   url: "https://www.uit.edu.vn/"
 
 # Short bio (displayed in user profile at end of posts)
-bio: Tôi có 2 ước mơ. Một là gia đình hạnh phúc hai là gổ quốc hùng cường.
+bio: Tôi có 2 ước mơ. Một là gia đình hạnh phúc hai là tổ quốc hùng cường.
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
