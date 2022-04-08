@@ -51,7 +51,7 @@ Chúng ta có thể mô tả bất kỳ mạch điện tử số nào ở bất 
 
 Verilog là một trong những ngôn ngữ HDL có sẵn trong ngành để thiết kế phần cứng, nó cho phép hiện thực các khối mạch số ở các cấp Behavior Level, Register Transfer Level (RTL), Gate level và Switch level. Verilog cho phép các nhà thiết kế phần cứng thể hiện thiết kế của họ với các cấu trúc hành vi (Behavioral constructs). Ví dụ hiện thực phần tử nhớ D Flip-Flop bằng verilog.
 
-![DFF!](/content/post/Verilog-HDL/introduction-verilog/images/d_ff.png "D Flip-Flop")
+![DFF!](/content/post/Verilog-HDL/introduction-verilog/images/dff.png "D Flip-Flop")
 
 Nhìn vào khối DFF ở hình trên chúng ta có thể thấy khối có tên là DFF nhận 1 input là D và cho ra 2 output là Q và Q'. Nào bây giờ cùng xem code verilog của nó. Chúng ta có thể mô tả một D Flip flop đơn giản như trong đoạn code dưới đây, cũng những thiết kế phức tạp có đến hàng triệu triệu cổng logic cũng bằng cách viết code verilog như bên dưới.
 
