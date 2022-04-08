@@ -58,10 +58,10 @@ Nhìn vào khối DFF ở hình trên chúng ta có thể thấy khối có tên
 ```verilog
       // D flip-flop Code
       module d_ff ( d, clk, q, q_bar);
-      input d ,clk;       // khai bao input
-      output q, q_bar;    // khai bao output
-      wire d ,clk;        // khai bao wire
-      reg q, q_bar;       // khai bao reg
+        input d ,clk;       // khai bao input
+        output q, q_bar;    // khai bao output
+        wire d ,clk;        // khai bao wire
+        reg q, q_bar;       // khai bao reg
 
       always @ (posedge clk)
       begin               // khi clk = 1
@@ -87,3 +87,23 @@ Những hệ thống mới như ASIC hoặc microprocessors (vi xử lý) với 
 Phong cách thiết kế mong muốn của tất cả các nhà thiết kế là phong cách từ trên xuống (Top-Down). Thiết kế từ trên xuống thực sự cho phép thực hiện các bước thử nghiệm sớm hơn, dễ dàng thay đổi các công nghệ khác nhau, thiết kế hệ thống có cấu trúc và cung cấp nhiều lợi thế khác
 
 ![Top-Down Flow!](./images/design_flow.png "Top-Down Flow")
+
+## **Verilog Abstraction Levels**
+
+Verilog hỗ trợ việc thiết kế với nhiều cấp trừu tượng (Abstraction Levels) khác nhau, nhưng được sử nhiều nhiều nhất và quan trọng nhất thì có 3 loại chính:
+
+- Behavioral level
+- Register-Transfer Level
+- Gate Level
+
+### **Behavioral level**
+
+Mức này mô tả một hệ thống bằng các thuật toán đồng thời (Behavioral). Bản thân mỗi thuật toán là tuần tự, có nghĩa là nó bao gồm một tập hợp các lệnh được thực hiện lần lượt. Các khối **Functions**, **Tasks** và **Always** là các yếu tố chính. Không liên quan đến việc hiện thực hóa cấu trúc của thiết kế.
+
+### **Register-Transfer Level**
+Các thiết kế sử dụng Register-Transfer Level xác định các đặc tính của mạch bằng các hoạt động và việc truyền dữ liệu giữa các thanh ghi. Một Clock được sử dụng và Thiết kế RTL có giới hạn thời gian chính xác: các hoạt động được lên lịch để xảy ra vào những thời điểm nhất định. 
+>**"Bất kỳ mã nào có thể tổng hợp được gọi là code RTL"**
+
+### **Gate Level**
+
+Trong mức logic, các đặc tính của hệ thống được mô tả bằng các liên kết logic và các thuộc tính thời gian của chúng. Tất cả các tín hiệu đều là tín hiệu rời rạc, Chúng chỉ có thể có các giá trị logic xác định ('0', '1', 'X', 'Z'). Các hoạt động có thể sử dụng là các nguyên thủy logic được xác định trước (AND, OR, NOT,...). *Sử dụng mô hình mức cổng có thể không phải là một ý tưởng hay cho bất kỳ mức thiết kế logic nào. Mã cấp cổng được tạo bởi các công cụ như công cụ tổng hợp và danh sách mạng này được sử dụng để mô phỏng cấp cổng và cho chương trình phụ trợ.*
