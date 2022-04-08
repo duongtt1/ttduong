@@ -56,20 +56,20 @@ Verilog là một trong những ngôn ngữ HDL có sẵn trong ngành để thi
 Nhìn vào khối DFF ở hình trên chúng ta có thể thấy khối có tên là DFF nhận 1 input là D và cho ra 2 output là Q và Q'. Nào bây giờ cùng xem code verilog của nó. Chúng ta có thể mô tả một D Flip flop đơn giản như trong đoạn code dưới đây, cũng những thiết kế phức tạp có đến hàng triệu triệu cổng logic cũng bằng cách viết code verilog như bên dưới.
 
 ```verilog
-// D flip-flop Code
-module d_ff ( d, clk, q, q_bar);
-input d ,clk;       // khai bao input
-output q, q_bar;    // khai bao output
-wire d ,clk;        // khai bao wire
-reg q, q_bar;       // khai bao reg
+      // D flip-flop Code
+      module d_ff ( d, clk, q, q_bar);
+      input d ,clk;       // khai bao input
+      output q, q_bar;    // khai bao output
+      wire d ,clk;        // khai bao wire
+      reg q, q_bar;       // khai bao reg
 
-always @ (posedge clk)
-begin               // khi clk = 1
-  q <= d;           // Q = D 
-  q_bar <= !d;      // Q' = ~D
-end
+      always @ (posedge clk)
+      begin               // khi clk = 1
+        q <= d;           // Q = D 
+        q_bar <= !d;      // Q' = ~D
+      end
 
-endmodule
+      endmodule
 ```
 
 ## **Phong cách thiết kế của Verilog**
