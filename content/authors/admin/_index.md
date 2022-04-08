@@ -26,7 +26,7 @@ social:
   link: '#contact'  # For a direct email link, use "mailto:test@example.org".
 - icon: github
   icon_pack: fab
-  link: https://github.com/duongdaidot
+  link: 
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # - icon: cv
@@ -34,7 +34,7 @@ social:
 #   link: files/cv.pdf
 
 # Enter email to display Gravatar (if Gravatar enabled in Config)
-email: "duongdaidot68@gmail.com"
+email: ""
 ---
 
 Tôi chủ yếu học và tham gia tìm hiểu các kiến thức chủ yếu nằm trong 2 mảng chính là **Embedded Automotive** và **Computer Vision**. Blog này được sinh ra với mục đích đơn thuần chỉ là 1 nơi để tôi ghi chú lại những kinh nghiệm hoặc những gì tôi cho là cần thiết trong lúc học và làm việc với các ngôn ngữ và công cụ lập trình.

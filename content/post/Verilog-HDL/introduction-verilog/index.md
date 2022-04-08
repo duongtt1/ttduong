@@ -1,5 +1,5 @@
 ---
-title: Giới thiệu Verilog-HDL (P1)
+title: Giới thiệu Verilog-HDL
 subtitle: Verilog là ngôn ngữ mô tả phần cứng được sử dụng để mô hình hóa các hệ thống điện tử. Nó được sử dụng phổ biến nhất trong thiết kế và xác minh các mạch kỹ thuật số ở trừu tượng mức chuyển thanh ghi.
 
 # Summary for listings and search engines
