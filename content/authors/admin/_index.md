@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Abe Kitaro
+title: Kitaro
 
 # Is this the primary user of the site?
 superuser: true
