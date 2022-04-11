@@ -48,7 +48,7 @@ Từ những khó khăn đó các ý tưởng về 1 ngôn ngữ có mức trừ
 
 ## **Qui trình thiết kế hệ thống số**
 
-![Design Flow!](./images/design_flow.png "Design Flow ASIC - Giao trinh Verilog ĐH CNTT - ĐHQG HCM")
+![Design Flow!](./images/design_flow.png "Design Flow ASIC - Giáo trình ngôn ngữ mô tả phần cứng Verilog ĐH CNTT - ĐHQG HCM")
 
 Quy trình thiết kế hệ thống số sử dụng các công cụ và phương pháp thiết kế tự động được bắt đầu bằng việc mô tả thiết kế tại nhiều mức độ trừu tượng khác nhau và kết thúc bằng việc tạo ra danh sách các linh kiện cũng như các đường kết nối giữa các linh kiện với nhau (netlist) cho một mạch tích hợp với ứng dụng cụ thể (ASIC), mạch in (layout) cho một mạch tích hợp theo yêu cầu khách hàng (custom IC), hoặc một chương trình cho một thiết bị logic có khả năng lập trình được (PLD).
 
@@ -68,20 +68,40 @@ Chúng ta sẽ còn nói về các kiểu thiết kế này ở các phần sau.
 
 Khi một thiết kế dùng Verilog hoàn thành thì chúng ta cần viết các **"testbench"** để kiểm tra xem khối vừa được thiết kế đã đúng chức năng hay chưa. Thông qua quá trình mô phỏng chúng ta có thể phát hiện ra được các lỗi sai về việc không tương thích giữa những linh kiện dùng trong thiết kế. Một testbench sử dụng cấu trúc mức cao của Verilog để tạo ra dữ liệu kiểm tra, quan sát kết quả ở ngõ ra, và cả việc kết nối giữa những tín hiệu trong thiết kế.
 
-Viết ra testbench để thực hiện mô phỏng cũng là 1 bước trong khâu **đánh giá thiết kế**, là một trong những khâu quan trọng trong quy trình thiết kế.
+Viết ra testbench để thực hiện mô phỏng cũng là 1 bước trọng để thực hiện **đánh giá thiết kế**, và đó cũng là một trong những khâu quan trọng nhất trong quy trình thiết kế.
 
 >Đánh giá thiết kế là quá trình mà người thiết kế sẽ kiểm tra thiết kế của họ có sai sót nào có thể xảy ra trong suốt quá trình thiết kế hay không.
 
 Một sai sót thiết kế có thể xảy ra do sự mô tả thiết kế không rõ ràng, do nhầm lẫn của người thiết kế, hoặc sử dụng không đúng những khối chức năng trong thiết kế. Đánh giá thiết kế có thể thực hiện bằng mô phỏng, bằng việc chèn những kĩ thuật kiểm tra, hoặc kiểm tra thông thường
 
+## **Mô phỏng**
+
+Chạy mô phỏng dùng trong việc đánh giá thiết kế được thực hiện
+trước khi thiết kế được tổng hợp và được thực hiện ở trên các cấp độ Behavior, RTL và Pre-synthetic. Chạy mô phỏng ở mức độ
+này sẽ chính xác theo xung clock bởi vì môi trường mô phỏng là môi trường lý tưởng, chưa có các vấn đề tiềm tàng như độ trễ trên cổng và dây kết nối, hazards, glitch, race conditions, timing Setup/hold input,... Một ưu điểm của mô phỏng ở mức độ này so với việc mô phỏng ở mức cổng hoặc mức transistor đó là thời gian mô phỏng nhanh hơn đáng kể.
+
+Nhưng mà để chạy được mô phỏng của 1 thiết kế thì chúng ta lại cần có dữ liệu kiểm tra. Để tạo ra được dữ liệu kiểm tra thì có nhiều cách khác nhau ví dụ như dùng GUI để vẽ dạng sóng hoặc có thể viết testbench,... Sau khi có dữ liệu kiểm tra và thực hiện mô phỏng thì việc cần làm của chúng ta đó là quan sát kết quả ngõ ra đa số ở dạng sóng ngoài ra còn có loại kết quả ngõ ra ở dạng văn bản (Pass hoặc Fail).
+
+![Simulator Flow!](./images/sim-flow.PNG "Simulator Flow ASIC - Giáo trình ngôn ngữ mô tả phần cứng Verilog ĐH CNTT - ĐHQG HCM")
+
+### **Testbench**
+
+### **Kĩ thuật chèn kiểm tra (assertion)**
+
+### **Kiểm tra thông thường**
+
+## **Biên dịch và tổng hợp thiết kế**
+
 ### **Phân tích**
 
-### **Tổng hợp**
+### **Tạo phần cứng**
 
-### **Sắp xếp cell và đi dây**
+### **Binding**
 
-## **Phân tích timing**
+### **Sắp xếp cell và đi dây kết nối**
 
 ## **Mô phỏng hậu tổng hợp**
+
+## **Phân tích timing**
 
 ## **Tạo linh kiện phần cứng**
