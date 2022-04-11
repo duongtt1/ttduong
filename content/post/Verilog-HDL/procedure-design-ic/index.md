@@ -9,10 +9,10 @@ summary: Quy trình thiết kế hệ thống số với Verilog-HDL
 projects: []
 
 # Date published
-date: "2022-04-03T00:00:00Z"
+date: "2022-04-10T00:00:00Z"
 
 # Date updated
-lastmod: "2022-04-03T00:00:00Z"
+lastmod: "2022-04-10T00:00:00Z"
 
 # Is this an unpublished draft?
 draft: false

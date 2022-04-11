@@ -9,10 +9,10 @@ summary: Verilog là ngôn ngữ mô tả phần cứng (hardware description la
 projects: []
 
 # Date published
-date: "2022-04-03T00:00:00Z"
+date: "2022-04-11T00:00:00Z"
 
 # Date updated
-lastmod: "2022-04-03T00:00:00Z"
+lastmod: "2022-04-11T00:00:00Z"
 
 # Is this an unpublished draft?
 draft: false
@@ -101,7 +101,8 @@ Verilog hỗ trợ việc thiết kế với nhiều cấp trừu tượng (Abst
 Mức này mô tả một hệ thống bằng các thuật toán đồng thời (Behavioral). Bản thân mỗi thuật toán là tuần tự, có nghĩa là nó bao gồm một tập hợp các lệnh được thực hiện lần lượt. Các khối **Functions**, **Tasks** và **Always** là các yếu tố chính. Không liên quan đến việc hiện thực hóa cấu trúc của thiết kế.
 
 ### **Register-Transfer Level**
-Các thiết kế sử dụng Register-Transfer Level xác định các đặc tính của mạch bằng các hoạt động và việc truyền dữ liệu giữa các thanh ghi. Một Clock được sử dụng và Thiết kế RTL có giới hạn thời gian chính xác: các hoạt động được lên lịch để xảy ra vào những thời điểm nhất định. 
+
+Các thiết kế sử dụng Register-Transfer Level xác định các đặc tính của mạch bằng các hoạt động và việc truyền dữ liệu giữa các thanh ghi. Một Clock được sử dụng và Thiết kế RTL có giới hạn thời gian chính xác: các hoạt động được lên lịch để xảy ra vào những thời điểm nhất định.
 >**"Bất kỳ mã nào có thể tổng hợp được gọi là code RTL"**
 
 ### **Gate Level**
