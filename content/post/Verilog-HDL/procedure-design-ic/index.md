@@ -72,7 +72,7 @@ Viết ra testbench để thực hiện mô phỏng cũng là 1 bước trong kh
 
 >Đánh giá thiết kế là quá trình mà người thiết kế sẽ kiểm tra thiết kế của họ có sai sót nào có thể xảy ra trong suốt quá trình thiết kế hay không.
 
-Một sai sót thiết kế có thể xảy ra do sự mô tả thiết kế không rõ ràng, do sai sót của người thiết kế, hoặc sử dụng không đúng những khối chức năng trong thiết kế. Đánh giá thiết kế có thể thực hiện bằng mô phỏng, bằng việc chèn những kĩ thuật kiểm tra, hoặc kiểm tra thông thường
+Một sai sót thiết kế có thể xảy ra do sự mô tả thiết kế không rõ ràng, do nhầm lẫn của người thiết kế, hoặc sử dụng không đúng những khối chức năng trong thiết kế. Đánh giá thiết kế có thể thực hiện bằng mô phỏng, bằng việc chèn những kĩ thuật kiểm tra, hoặc kiểm tra thông thường
 
 ### **Phân tích**
 
