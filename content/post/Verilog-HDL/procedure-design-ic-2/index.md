@@ -70,6 +70,12 @@ Sau bước tối ưu logic, quá trình tổng hợp sử dụng thông tin t�
 
 ### **Sắp xếp cell và đi dây kết nối**
 
+Bước Sắp xếp cell và đi dây kết nối sẽ quyết định vị trí của các linh kiện được đặt ở đâu trong phần cứng mục tiêu. Sau khi thực hiện bước này thì thiết kế của chúng ta đã có thể được đưa lên các thiết bị phần cứng mục tiêu là FPLD, hay dùng để sản xuất ASIC.
+
+>Ngoài việc mô tả phần cứng thiết kế dùng Verilog, công cụ tổng hợp đòi hỏi những thông tin mô tả thiết bị phần cứng đích để tiến hành quá trình tổng hợp của mình. Kết quả ngõ ra của công cụ tổng hợp là danh sách các cổng và flip-flop có sẵn trong thiết bị phần cứng mục tiêu và hệ thống dây kết nối giữa các linh kiện này.
+
+![Example Synthesis!](./images/example-systhesic.PNG "Example Synthesis - Giáo trình ngôn ngữ mô tả phần cứng Verilog ĐH CNTT - ĐHQG HCM")
+
 ## **Mô phỏng hậu tổng hợp**
 
 ## **Phân tích timing**
