@@ -42,9 +42,7 @@ categories:
 
 ## **Biên dịch và tổng hợp thiết kế**
 
-Tổng hợp là quá trình tạo ra phần cứng tự động từ một mô tả thiết kế phần cứng tương ứng rõ ràng. Những phong cách viết code một cách nhất định cho mạch tổ hợp cũng như mạch tuần tự. Những phong cách này và cấu trúc Verilog tương ứng của chúng được định nghĩa trong việc tổng hợp RTL.
-
-Như trong sơ đồ quy trình thiết kế đã được trình bày ở phần 1, một thiết kế sau khi được thực hiện mô phỏng tiền tổng hợp và đã được đánh giá kiểm tra xong thì nó sẽ được tiến hành biên dịch để tiến gần hơn đến việc làm ra phần cứng thực sự trên silicon.  
+Tổng hợp là quá trình tạo ra phần cứng tự động từ một mô tả thiết kế phần cứng tương ứng rõ ràng. Như trong sơ đồ quy trình thiết kế đã được trình bày ở phần 1, một thiết kế sau khi được thực hiện mô phỏng tiền tổng hợp và đã được đánh giá kiểm tra xong thì nó sẽ được tiến hành biên dịch để tiến gần hơn đến việc làm ra phần cứng thực sự trên silicon.  
 
 ![Compile Flow!](./images/compile-asic.PNG "Compile Flow ASIC - Giáo trình ngôn ngữ mô tả phần cứng Verilog ĐH CNTT - ĐHQG HCM")
 
