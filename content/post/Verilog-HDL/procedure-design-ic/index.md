@@ -1,5 +1,5 @@
 ---
-title: Thiết kế hệ thống số với HDL
+title: Thiết kế hệ thống số với HDL (P1)
 subtitle: Trước khi Verilog-HDL ra đời tất cả các thiết kế bất kể là phức tạp hay đơn giản đều dựa trên việc thiết kế schematics. Điều này làm khó khăn hơn cho việc xác minh và dễ xảy ra lỗi, chu kỳ phát triển lại tốn nhiều thời gian mà công việc lại tẻ nhạt, chỉ đơn thuần design...verification.
 
 # Summary for listings and search engines
@@ -89,18 +89,8 @@ liệu kiểm tra testbench phức tạp, kĩ thuật chèn thiết bị giám s
 
 Kiểm tra thông thường là quá trình kiểm tra những đặc tính bất kì của thiết kế. Khi một thiết kế hoàn thành, chúng ta sẽ xây dựng một chuỗi những đặc tính tương ứng với hành vi của thiết kế. Công cụ kiểm tra thông thường sẽ kiểm tra thiết kế để đảm bảo rằng những đặc tính được mô tả đáp ứng được tất cả những điều kiện. Nếu có một đặc tính được phát hiện là không đáp ứng đúng thì đặc tính đó được xem như vi phạm. Độ bao phủ của đặc tính (coverage) chỉ ra bao nhiêu phần trăm đặc tính của thiết kế đã được kiểm tra.
 
-## **Biên dịch và tổng hợp thiết kế**
+>Vì bài viết cũng khá là dài rồi nên các khâu phía sau chúng ta sẽ cùng nhau tìm hiểu tiếp ở phần 2
 
-### **Phân tích**
+## **Nguồn tham khảo**
 
-### **Tạo phần cứng**
-
-### **Binding**
-
-### **Sắp xếp cell và đi dây kết nối**
-
-## **Mô phỏng hậu tổng hợp**
-
-## **Phân tích timing**
-
-## **Tạo linh kiện phần cứng**
+- Giáo trình ngôn ngữ mô tả phần cứng Verilog ĐH CNTT - ĐHQG HCM
