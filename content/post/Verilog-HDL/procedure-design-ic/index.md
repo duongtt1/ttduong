@@ -62,18 +62,6 @@ Thiết kế được mô tả bằng Verilog theo phong cách phân cấp từ 
 
 Chúng ta sẽ còn nói về các kiểu thiết kế này ở các phần sau.
 
-## **Mô phỏng tiền tổng hợp**
-
->Khi chạy mô phỏng 1 thiết kế chúng ta cần chuẩn bị 1 dữ liệu đầu vào, sau đó đưa chúng qua khối thiết kế và quan sát tín hiệu ở ngõ ra xem đã đúng yêu cầu hay chưa thì những dữ liệu dùng để kiểm tra này được gọi là testbench.
-
-Khi một thiết kế dùng Verilog hoàn thành thì chúng ta cần viết các **"testbench"** để kiểm tra xem khối vừa được thiết kế đã đúng chức năng hay chưa. Thông qua quá trình mô phỏng chúng ta có thể phát hiện ra được các lỗi sai về việc không tương thích giữa những linh kiện dùng trong thiết kế. Một testbench sử dụng cấu trúc mức cao của Verilog để tạo ra dữ liệu kiểm tra, quan sát kết quả ở ngõ ra, và cả việc kết nối giữa những tín hiệu trong thiết kế.
-
-Viết ra testbench để thực hiện mô phỏng cũng là 1 bước trọng để thực hiện **đánh giá thiết kế**, và đó cũng là một trong những khâu quan trọng nhất trong quy trình thiết kế.
-
->Đánh giá thiết kế là quá trình mà người thiết kế sẽ kiểm tra thiết kế của họ có sai sót nào có thể xảy ra trong suốt quá trình thiết kế hay không.
-
-Một sai sót thiết kế có thể xảy ra do sự mô tả thiết kế không rõ ràng, do nhầm lẫn của người thiết kế, hoặc sử dụng không đúng những khối chức năng trong thiết kế. Đánh giá thiết kế có thể thực hiện bằng mô phỏng, bằng việc chèn những kĩ thuật kiểm tra, hoặc kiểm tra thông thường
-
 ## **Mô phỏng**
 
 Chạy mô phỏng dùng trong việc đánh giá thiết kế được thực hiện
@@ -82,13 +70,24 @@ này sẽ chính xác theo xung clock bởi vì môi trường mô phỏng là m
 
 Nhưng mà để chạy được mô phỏng của 1 thiết kế thì chúng ta lại cần có dữ liệu kiểm tra. Để tạo ra được dữ liệu kiểm tra thì có nhiều cách khác nhau ví dụ như dùng GUI để vẽ dạng sóng hoặc có thể viết testbench,... Sau khi có dữ liệu kiểm tra và thực hiện mô phỏng thì việc cần làm của chúng ta đó là quan sát kết quả ngõ ra đa số ở dạng sóng ngoài ra còn có loại kết quả ngõ ra ở dạng văn bản (Pass hoặc Fail).
 
-![Simulator Flow!](./images/sim-flow.PNG "Simulator Flow ASIC - Giáo trình ngôn ngữ mô tả phần cứng Verilog ĐH CNTT - ĐHQG HCM")
+![Simulator Flow!](./images/sim-flow.PNG "Simulator Flow - Giáo trình ngôn ngữ mô tả phần cứng Verilog ĐH CNTT - ĐHQG HCM")
 
-### **Testbench**
+### **Viết Testbench**
+
+Khi chạy mô phỏng thì khối thiết kế sẽ được gọi ra để kiểm tra bằng cách đưa dữ liệu testbench vào ngõ vào của khối, như hình trên thì ngõ ra dạng sóng của khối sẽ thay đổi ngay khi xung clock kích cạnh lên do đã bỏ qua thời gian delay ở các cổng và dây kết nối. Trong thực tế thì mỗi linh kiện thực tế sẽ có các đáp ứng khác nhau, thời gian trễ của các khối được sử dụng và cả thời gian từ khi xung clock kích cạnh lên đến khi ra ở ngõ ra mặc dù rất nhỏ nhưng vẫn lớn hơn 0, một điều nữa là nếu lựa chọn tần số xung clock để cấp vào mạch quá cao so với tốc độ truyền tín hiệu ở trên các cổng của transistor sử dụng trong thiết kế thì ngõ ra của thiết kế sẽ không thể xác định được.
+
+Vì những yếu tố nói trên nên việc mô phỏng tiền tổng hợp sẽ không cung cấp các thông tin chi tiết về mặt định thời của thiết kế được mô phỏng. Do đó những vấn đề tiềm ẩn như thời gian trễ trên các cổng, dây kết nối, phần cứng sẽ không được phát hiện. Thay vào đó việc kiểm tra định thời của thiết kế ví dụ như thiết kế nhanh hay chậm, hoạt động ở tần số xung clock bao nhiêu là được sẽ được thực hiện trong quá trình **Mô phỏng hậu tổng hợp**
+
+![Testbench Flow!](./images/testbench-flow.PNG "Example testbench - Giáo trình ngôn ngữ mô tả phần cứng Verilog ĐH CNTT - ĐHQG HCM")
 
 ### **Kĩ thuật chèn kiểm tra (assertion)**
 
+Thay vì phải dò theo kết quả mô phỏng bằng mắt hay tạo những dữ
+liệu kiểm tra testbench phức tạp, kĩ thuật chèn thiết bị giám sát có thể được sử dụng để kiểm tra tuần tự những đặc tính của thiết kế trong suốt quá trình mô phỏng. Khi thực hiện chèn thiết bị giám sát vào mô phỏng thì chúng ta cần phải xác định các đặc tính của thiết kế từ đó đặt ra các điều kiện cần đạt được để thoả mãn các đặc tính của thiết kế. Các thiết bị giám sát được cài vào sẽ thông báo lỗi khi có **bất kỳ một đặc tính nào đó của thiết kế được phát hiện là sai**. Có thư viện OVL (Open Verification Library) cung cấp một chuỗi các thiết bị giám sát để chèn vào hệ thống thiết kế nhằm mục đích giám sát những đặc tính thông thường của thiết kế. Thay vì dùng các thiết bị giám sát có sẵn chúng ta có thể dùng những kĩ thuật giám sát của riêng mình để chèn vào thiết kế và dùng chúng kết hợp với testbench trong việc kiểm tra đánh giá thiết kế.
+
 ### **Kiểm tra thông thường**
+
+Kiểm tra thông thường là quá trình kiểm tra những đặc tính bất kì của thiết kế. Khi một thiết kế hoàn thành, chúng ta sẽ xây dựng một chuỗi những đặc tính tương ứng với hành vi của thiết kế. Công cụ kiểm tra thông thường sẽ kiểm tra thiết kế để đảm bảo rằng những đặc tính được mô tả đáp ứng được tất cả những điều kiện. Nếu có một đặc tính được phát hiện là không đáp ứng đúng thì đặc tính đó được xem như vi phạm. Độ bao phủ của đặc tính (coverage) chỉ ra bao nhiêu phần trăm đặc tính của thiết kế đã được kiểm tra.
 
 ## **Biên dịch và tổng hợp thiết kế**
 
