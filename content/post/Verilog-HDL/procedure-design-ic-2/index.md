@@ -78,6 +78,18 @@ Bước Sắp xếp cell và đi dây kết nối sẽ quyết định vị trí
 
 ## **Mô phỏng hậu tổng hợp**
 
+Sau khi quá trình tổng hợp hoàn thành, chúng ta sẽ có được một netlist hoàn chỉnh chứa những linh kiện của thiết bị mục tiêu, các giá trị định thời của nó, các thông tin chi tiết về các cổng logic đã dùng trong thiết kế và, thông tin về độ trễ trên đường dây kết nối và những tác động của tải lên các cổng logic dùng trong quá trình hậu tổng hợp.
+
+Chúng ta có thể thực hiện mô phỏng trên các netlist này và quá trình mô phỏng đó cũng chính là quá trình mô phỏng hậu tổng hợp. Quá trình hậu tổng hợp khác quá trình tiền tổng hợp ở chỗ đó là trong quá trình hậu tổng hợp có thêm các yếu tố tác nhân như như độ trễ trên cổng và dây kết nối, hazards, glitch, race conditions, timing Setup/hold input. Chúng ta cũng có thể sử dụng chính testbench (dữ liệu kiểm tra) đã viết cho quá trình mô phỏng tiền tổng hợp để thực hiện cho quá trình hậu tổng hợp.
+
 ## **Phân tích timing**
 
+Ở trong các phần mềm khác nhau thì bước phân tích thời gian có thể nằm ở trong các khâu khác nhau, nhưng về cơ bản thì nhiệm vụ chính của việc phân tích thời gian đó là chúng ta sẽ giả lập tình trạng tệ nhất của độ trì hoãn , tốc độ xung clock, độ trì hoãn từ cổng này đến cổng khác, cũng như thời gian cho việc thiết lập và giữ tín hiệu. Kết quả ngõ ra của khâu này sẽ ở dạng bảng hoặc biểu đồ, từ đây chúng ta quan sát và dựa trên kết quả trình để xác định tốc độ hoạt động của mạch thiết kế.
+
 ## **Tạo linh kiện phần cứng**
+
+Bước cuối cùng trong quy trình thiết kế dựa trên Verilog đó là tạo ra phần cứng thực sự cho mạch thiết kế. Bước này có thể tạo ra một netlist dùng để sản xuất ASIC, một chương trình để nạp vào FPLD, hay một mạch in cho mạch IC.
+
+## **Nguồn tham khảo**
+
+- Giáo trình ngôn ngữ mô tả phần cứng Verilog ĐH CNTT - ĐHQG HCM
