@@ -111,7 +111,7 @@ Như đoạn code trên chúng ta thấy `SUM` không phải là 1 hàm, nó ch�
 
 Nếu bạn sử dụng `gcc` hoặc `clang` để build thì có thể thêm tham số `-E` vào lệnh build để có thể xem mã nguồn được chỉnh sửa sau khi qua bước tiền xử lý như hình dưới:
 
->Vì mình có `#include <stdio.h> nên khúc đầu nó sẽ show ra cả mã nguồn của thư viện này, phần mã nguồn chính trong hàm main của chúng ta sẽ xuất hiện ở dưới cùng`
+>Vì chúng ta có `#include <stdio.h> nên sau khi tiền xử lý mã nguồn chính sẽ có cả nội dung của file này ở trên đầu, phần mã nguồn chính trong hàm main của chúng ta sẽ xuất hiện ở dưới cùng`
 
 ![Phần đầu khi chạy gcc!](./images/option-e.PNG "Phần đầu khi chạy lệnh gcc -e")
 
@@ -155,13 +155,70 @@ int main(void) {
 
 Như chúng ta có thể thấy, sau khi đi qua bước tiền xử lý, mã nguồn đã được xử lý đúng theo cú pháp của C. Đây là 1 ứng dụng quan trọng của macros được dùng để định nghĩa một ngôn ngữ đặc tả chuyên biệt **(Domain Specific Language - DSL)** mới và viết code để sử dụng nó.
 
->DSLs (Domain Specific Language) có nhiều ứng dụng trong nhiều phần trong 1 dự án. Các framework testing như Google Test (gtest) đã sử dụng rất nhiều DSLs để viết *assertions* (vd: EXPECT_TRUE, SUCCEED, FAIL, ADD_FAILURE_AT,... ), *expectations* và  *test scenarios* ()
+>DSLs (Domain Specific Language) có nhiều ứng dụng trong nhiều phần trong 1 dự án. Các framework testing như Google Test (gtest) đã sử dụng rất nhiều DSLs để viết **assertions** (vd: EXPECT_TRUE, SUCCEED, FAIL, ADD_FAILURE_AT,... ), **expectations** và  **test scenarios** ()
 
+Đến đây cũng khá là dài rồi, bây giờ chúng ta sẽ đi tìm hiểu thêm về 1 ví dụ cuối cùng trong phần này, Phần macros này sẽ có 3-4 phần, đây là phần 1, ở 2 phần sau chúng ta sẽ đi tìm hiểu tiếp về  **Variadic macros** và **Ưu Nhược điểm khi sử dụng macros** Còn bây giờ cùng xem xét về đoạn code phía dưới nào.
 
-## **Variadic macros**
+```c
+// build: gcc *namefile*.c
+// run: a.exe copy
 
-## **Ưu Nhược điểm khi sử dụng macros**
+#include <stdio.h>
+#include <string.h>
+
+#define CMD(NAME)            \
+  char NAME##_cmd[256] = ""; \
+  strcpy(NAME##_cmd, #NAME);
+
+int main(int argc, char **argv)
+{
+  CMD(copy)
+  CMD(paste)
+  CMD(delete)
+
+  if (strcmp(argv[1], copy_cmd) == 0) {
+    printf("copy_cmd");
+  }
+  if (strcmp(argv[1], paste_cmd) == 0) {
+    printf("paste_cmd");
+  }
+  if (strcmp(argv[1], delete_cmd) == 0) {
+    printf("delete_cmd");
+  }
+  return 0;
+}
+```
+
+Mã nguồn sau khi đi qua bước tiền xử lý
+
+```c
+...............
+int main(int argc, char **argv)
+{
+  char copy_cmd[256] = ""; strcpy(copy_cmd, "copy");
+  char paste_cmd[256] = ""; strcpy(paste_cmd, "paste");
+  char cut_cmd[256] = ""; strcpy(cut_cmd, "cut");
+
+  if (strcmp(argv[1], copy_cmd) == 0) {
+    printf("copy_cmd");
+  }
+  if (strcmp(argv[1], paste_cmd) == 0) {
+    printf("paste_cmd");
+  }
+  if (strcmp(argv[1], delete_cmd) == 0) {
+    printf("delete_cmd");
+  }
+  return 0;
+}
+```
+
+Trong bước *macros expansion* toán tử `#` sẽ biến đổi tham số truyền vào của macro (tham số có tên đi theo sau toán tử #) trở thành dạng `string` và sẽ thay thế vào chính vị trí của toán tử `#`. Ví dụ như trong đoạn code trên dòng `#define CMD(NAME) ... strcpy(NAME##_cmd, #NAME);` với tham số truyền vào là `CMD(delete)` thì ở toán tử `#` sẽ được thay thế lại như sau `strcpy(NAME##_cmd, "copy")` như vậy từ tham số truyền vào là `copy` thì toán tử `#` đã xử lý thành `"copy"`, khi đã đưa về được dạng `string` thì lúc này đưa vào làm đối số của hàm `strcmp()` hoàn toàn hợp lệ với cú pháp của C.
+
+Trong đoạn code định nghĩa macro trên, ngoài toán tử `#` thì còn có 1 toán tử nữa là `##`. Đối với toán tử `##` thì cách hoạt động của nó là nối tham số với 1 thành phần khác trong định nghĩa của macro và thường là sẽ tạo thành 1 tên biến. Quay lại ví dụ trên ở dòng `#define CMD(NAME) char NAME##_cmd[256] = "";` với đối số truyền vào là `CMD(delete)` thì khi đi vào bước tiền xử lý `char NAME##_cmd[256]` sẽ được thay thế bằng `char delete_cmd[256]`.
+
+Trên đây chỉ là những ví dụ cơ bản nhằm mục đích giới thiệu là chính. Bản thân ngôn ngữ C cung cấp cho chúng ta nhiều "vũ khí" mạnh mẽ, nhưng tuỳ vào từng trường hợp mà sẽ có cách sử dụng khác nhau. Các ứng dụng thực tế của chúng trong các mã nguồn dự án viết bằng C có rất nhiều, nếu có dịp nào đó thì chúng ta sẽ đi tìm hiểu thêm về chủ đề này. Còn bây giờ có lẽ Phần 1 của chủ đề macro nên tạm dừng ở đây, ở Phần 2 chúng ta sẽ đi tìm hiểu 1 loại macro khác đó là *Variadic macros*.
 
 ## **Nguồn tham khảo**
 
+- Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C 1st Edition - Kamran Amini (PDF Book)
 - <https://en.cppreference.com/w/c/preprocessor>

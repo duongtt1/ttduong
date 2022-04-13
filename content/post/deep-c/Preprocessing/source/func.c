@@ -1,13 +1,24 @@
-// #include <stdio.h>
+#include <stdio.h>
+#include <string.h>
 
-#define PRINT(a) printf("%d\n", a);
-#define LOOP(v, s, e) \
-  for (int v = s; v <= e; v++) {
-#define ENDLOOP }
+#define CMD(NAME)              \
+	char NAME##_cmd[256] = ""; \
+	strcpy(NAME##_cmd, #NAME);
 
-int main(int argc, char** argv) {
-  LOOP(counter, 1, 10)
-    // PRINT(counter)
-  ENDLOOP
-  return 0;
+int main(int argc, char **argv)
+{
+	CMD(copy)
+	CMD(paste)
+	CMD(delete)
+
+  if (strcmp(argv[1], copy_cmd) == 0) {
+    printf("copy_cmd");
+  }
+  if (strcmp(argv[1], paste_cmd) == 0) {
+    printf("paste_cmd");
+  }
+  if (strcmp(argv[1], delete_cmd) == 0) {
+    printf("delete_cmd");
+  }
+	return 0;
 }
