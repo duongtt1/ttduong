@@ -37,6 +37,6 @@ social:
 email: ""
 ---
 
-Mình chủ yếu học và tham gia tìm hiểu các kiến thức chủ yếu nằm trong 2 mảng chính là **Embedded Automotive** và **Computer Vision**. Blog này được sinh ra với mục đích đơn thuần chỉ là 1 nơi để mình viết lại các ghi chú trong lúc học và làm việc với các ngôn ngữ và công cụ lập trình.
+Mình chủ yếu học và tham gia tìm hiểu các kiến thức chủ yếu nằm trong 2 mảng chính là **Embedded Automotive** và **Computer Vision**. *Blog này được sinh ra với mục đích đơn thuần chỉ là 1 nơi để mình viết lại các ghi chú trong lúc học và làm việc với các ngôn ngữ và công cụ lập trình.*
 
->Có một số nội dung được mình ghi chú lại theo cách hiểu của mình khi đang trong quá trình học về công nghệ đó, Vì vậy sẽ có chỗ mình hiểu đúng và cũng sẽ có chỗ mình hiểu chưa đúng. Thế nên Bạn đọc chỉ nên xem ở mức độ tham khảo. Nếu Bạn đọc thấy có chỗ nào chưa đúng thì hãy phản hồi lại giúp mình với nhé.
+>Có một số nội dung được mình ghi chú lại theo cách hiểu của mình khi đang trong quá trình học về công nghệ đó, Vì vậy sẽ có chỗ mình hiểu đúng và cũng sẽ có chỗ mình hiểu chưa đúng. **Thế nên Bạn đọc chỉ nên xem ở mức độ tham khảo**. Nếu Bạn đọc thấy có chỗ nào chưa đúng thì hãy phản hồi lại giúp mình với nhé.
