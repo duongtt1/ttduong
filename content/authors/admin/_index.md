@@ -14,7 +14,7 @@ organizations:
   url: "https://www.uit.edu.vn/"
 
 # Short bio (displayed in user profile at end of posts)
-bio: Tôi có 2 ước mơ. Một là gia đình hạnh phúc hai là tổ quốc hùng cường.
+bio: Tôi có 2 ước mơ. Một là gia đình hạnh phúc hai là đất nước hùng cường.
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -37,6 +37,6 @@ social:
 email: ""
 ---
 
-Tôi chủ yếu học và tham gia tìm hiểu các kiến thức chủ yếu nằm trong 2 mảng chính là **Embedded Automotive** và **Computer Vision**. Blog này được sinh ra với mục đích đơn thuần chỉ là 1 nơi để tôi ghi chú lại những kinh nghiệm hoặc những gì tôi cho là cần thiết trong lúc học và làm việc với các ngôn ngữ và công cụ lập trình.
+Mình chủ yếu học và tham gia tìm hiểu các kiến thức chủ yếu nằm trong 2 mảng chính là **Embedded Automotive** và **Computer Vision**. Blog này được sinh ra với mục đích đơn thuần chỉ là 1 nơi để mình viết lại các ghi chú trong lúc học và làm việc với các ngôn ngữ và công cụ lập trình.
 
-Vì vậy chắc chắn sẽ không thể tránh khỏi những thiếu sót hoặc lỗi sai, tôi rất vui nếu như nó có thể giúp ích được gì đó cho bạn **NHƯNG** làm ơn hãy lưu ý **ĐỪNG TIN RẰNG 100%** những gì tôi viết là sẽ đúng. Bởi vì chính tôi cũng không chắc chắn việc đó. Tôi xin nhắc lại 1 lần nữa Blog này đơn thuần chỉ là 1 nơi để tôi ghi chú lại theo cảm tính cá nhân nó không đầy đủ và cũng không chắc chắn đúng 100%.
+>Có một số nội dung được mình ghi chú lại theo cách hiểu của mình khi đang trong quá trình học về công nghệ đó, Vì vậy sẽ có chỗ mình hiểu đúng và cũng sẽ có chỗ mình hiểu chưa đúng. Thế nên Bạn đọc chỉ nên xem ở mức độ tham khảo. Nếu Bạn đọc thấy có chỗ nào chưa đúng thì hãy phản hồi lại giúp mình với nhé.
