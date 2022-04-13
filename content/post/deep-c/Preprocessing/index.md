@@ -1,5 +1,5 @@
 ---
-title: Chỉ thị tiền xử lý trong C (Preprocessor directives)
+title: Tiền xử lý trong C (Phần 1)
 subtitle: Tiền xử lý là 1 tính năng mạnh mẽ của ngôn ngữ lập trình C, nhờ tính năng này là các lập trình viên có thể sửa đổi mã nguồn trước khi chúng được chuyển đến cho compiler.
 
 # Summary for listings and search engines
