@@ -23,7 +23,7 @@ featured: false
 # Featured image
 # Place an image named `featured.jpg/png` in this page's folder and customize its options here.
 image:
-  caption: 'Image credit: [**fossbytes.com**](https://fossbytes.com/wp-content/uploads/2020/01C-pogramming-language-of-2019_tiobe-768x440.jpg)'
+  caption: 'Image credit: [**imgur.com**](https://i.imgur.com/cdYTRZi.jpeg)'
   focal_point: ""
   placement: 2
   preview_only: false
@@ -67,6 +67,7 @@ Một macros được định nghĩa bởi chỉ thị `#define` theo sau chỉ 
 
 ```c
 #include <stdio.h>
+
 #define y 9
 
 int main(void) {
@@ -83,6 +84,7 @@ Trong đoạn code trên chúng ta có thể thấy `y` không phải là 1 bi�
 
 ```c
 #include <stdio.h>
+
 #define y 9
 
 int main(void) {
@@ -97,6 +99,7 @@ Bây giờ thêm 1 ví dụ khác để chúng ta hiểu rõ thêm về bước 
 
 ```c
 #include <stdio.h>
+
 #define SUM(a,b) a + b
 
 int main(int argc, char **argv)
@@ -109,19 +112,17 @@ int main(int argc, char **argv)
 
 Như đoạn code trên chúng ta thấy `SUM` không phải là 1 hàm, nó chỉ trông giống như hàm. Chính xác thì nó chính là 1 macro có nhận tham số truyền vào. Sau thi qua bước  *macro expansion* thì đoạn code trên sẽ được xử lý thành như sau:
 
-```c
-#include <stdio.h>
-#define SUM(a,b) a + b
+Nếu bạn sử dụng `gcc` hoặc `clang` để build thì có thể thêm tham số `-E` vào lệnh build để có thể xem mã nguồn được chỉnh sửa sau khi qua bước tiền xử lý như hình dưới:
 
-int main(int argc, char **argv)
-{
-  int s = 2 + 3;      // SUM(2,3) => 2 + 3 
-  printf("s= %d",s);  // s= 5
-  return 0;
-}
-```
+![Phần đầu khi chạy gcc!](./images/option-e.PNG "Phần đầu khi chạy lệnh gcc -e")
+
+![Phần sau khi chạy gcc!](./images/out-e.PNG "Mã nguồn khi xử lý xong bước tiền xử lý")
 
 Khi chúng ta gọi marco `SUM(2,3)` thì sẽ tương ứng với các tham số truyền vào theo thứ tự như chúng ta đã định nghĩa ở trên, trong đoạn code trên thì `a = 2` và `b = 3` từ đó tất cả các tham số `a` ở phần định nghĩa giá trị của macro sẽ được thay thế bằng `2`, đối với tham số `b` sẽ làm tương tự. Sau khi thay thế hết các giá trị tham số truyền vào thì bước cuối cùng sẽ thay thế tên của macro bằng giá trị macro đã được thay thế tham số, ở đoạn code trên thì `SUM(2,3)` sẽ được thay thế bằng `2 + 3`
+
+Chúng ta có thể sử dụng marco để định nghĩa 1 hàm và dùng nó thay thế cho việc viết 1 hàm C và gọi nó ra. Làm như vậy thì khi đi qua bước tiền xử lý, thì macro sẽ được thay thế bằng logic của hàm mà chúng ta đã định nghĩa, việc thay đổi này là thay đổi trực tiếp trên source code, đây là 1 điểm khác so với hàm C bình thường vốn dĩ muốn thực thi logic của hàm C chúng ta phải thực hiện 1 lời gọi hàm. Tất nhiên là đánh đổi lại việc sử dụng macro như vậy cũng sẽ có nhược điểm, phần này chúng ta sẽ tìm hiểu thêm ở phần sau.
+
+>Có 1 điều khá là quan trọng khi sử dụng macro đó là macro chỉ tồn tại đến bước tiền xử lý và compiler sẽ không biết gì về macro cả. Vì vậy khi bạn muốn sử dụng macro thay cho hàm bình thường thì hãy để ý đến việc này. Compiler có thể hiểu được hàm bởi vì hàm là 1 phần trong cú pháp của C. Hàm khi gửi đến compiler nó sẽ được phân tích cú pháp và đưa vào *cây phân tích cú pháp* (parse tree) còn macro chỉ là 1 chỉ thị tiền xử lý và chỉ có Bộ tiền xử lý hiểu nó.
 
 ## **Variadic macros**
 
