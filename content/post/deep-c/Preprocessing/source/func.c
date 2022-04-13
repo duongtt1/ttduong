@@ -1,10 +1,13 @@
-#include <stdio.h>
+// #include <stdio.h>
 
-#define SUM(a,b) a + b
+#define PRINT(a) printf("%d\n", a);
+#define LOOP(v, s, e) \
+  for (int v = s; v <= e; v++) {
+#define ENDLOOP }
 
-int main(int argc, char **argv)
-{
-  int s = SUM(2,3);
-  printf("s= %d",s); // s= 5
+int main(int argc, char** argv) {
+  LOOP(counter, 1, 10)
+    // PRINT(counter)
+  ENDLOOP
   return 0;
 }

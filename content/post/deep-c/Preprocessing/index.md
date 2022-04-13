@@ -44,7 +44,7 @@ categories:
 
 Tiền xử lý là 1 tính năng mạnh mẽ của ngôn ngữ lập trình C, nhờ tính năng này là các lập trình viên có thể sửa đổi mã nguồn trước khi chúng được chuyển đến cho compiler. Bước tiền xử lý này cũng là bước được xử lý đặc biệt của C và C++ mà lại không có ở hầu hết các ngôn ngữ bậc cao hiện nay.
 
-Chỉ thị tiền xử lý là các chỉ thị (lệnh) được cung cấp cho bộ tiền xử lý để xử lý mã nguồn trước khi gửi mã nguồn đi đến compiler. Các chỉ thị này thì sẽ bắt đầu với dấu **#** ở đầu. Bản thân compiler cũng không hiểu các chỉ thị này, mà các chỉ thị này sẽ được xử lý trực tiếp ở Bộ tiền xử lý, sau khi Bộ tiền xử lý đã xử lý xong hết các chỉ thị xuất hiện trong cả file header và file source thì lúc này source code hoàn chỉnh mới được gửi đến cho compiler.
+Chỉ thị tiền xử lý là các chỉ thị (lệnh) được cung cấp cho bộ tiền xử lý để xử lý mã nguồn trước khi gửi mã nguồn đi đến compiler. Các chỉ thị này thì sẽ bắt đầu với dấu `#` ở đầu. Bản thân compiler cũng không hiểu các chỉ thị này, mà các chỉ thị này sẽ được xử lý trực tiếp ở Bộ tiền xử lý, sau khi Bộ tiền xử lý đã xử lý xong hết các chỉ thị xuất hiện trong cả file header và file source thì lúc này source code hoàn chỉnh mới được gửi đến cho compiler.
 
 Trong C có khá nhiều loại chỉ thị nhưng trong khuôn khổ nội dung ghi chú này, mình chỉ trình bày các chỉ thị quan trọng hay được xử dụng nhất như định nghĩa macros,... Còn các chỉ thị nâng cao xin hẹn ở một bài viết khác.
 
@@ -83,10 +83,7 @@ int main(void) {
 Trong đoạn code trên chúng ta có thể thấy `y` không phải là 1 biến `int` cũng không phải là 1 hằng `int`. `y` đơn thuần là 1 marco và nó có tên là `y` tương ứng giá trị là `9` sau khi bộ tiền xử lý thực hiện xong bước *macro expansion* thì đoạn mã nguồn ở dưới đây sẽ được gửi đến compiler:
 
 ```c
-#include <stdio.h>
-
-#define y 9
-
+.....
 int main(void) {
     int x = 2;          
     int s = x + 9;      
@@ -114,6 +111,8 @@ Như đoạn code trên chúng ta thấy `SUM` không phải là 1 hàm, nó ch�
 
 Nếu bạn sử dụng `gcc` hoặc `clang` để build thì có thể thêm tham số `-E` vào lệnh build để có thể xem mã nguồn được chỉnh sửa sau khi qua bước tiền xử lý như hình dưới:
 
+>Vì mình có `#include <stdio.h> nên khúc đầu nó sẽ show ra cả mã nguồn của thư viện này, phần mã nguồn chính trong hàm main của chúng ta sẽ xuất hiện ở dưới cùng`
+
 ![Phần đầu khi chạy gcc!](./images/option-e.PNG "Phần đầu khi chạy lệnh gcc -e")
 
 ![Phần sau khi chạy gcc!](./images/out-e.PNG "Mã nguồn khi xử lý xong bước tiền xử lý")
@@ -123,6 +122,41 @@ Khi chúng ta gọi marco `SUM(2,3)` thì sẽ tương ứng với các tham s�
 Chúng ta có thể sử dụng marco để định nghĩa 1 hàm và dùng nó thay thế cho việc viết 1 hàm C và gọi nó ra. Làm như vậy thì khi đi qua bước tiền xử lý, thì macro sẽ được thay thế bằng logic của hàm mà chúng ta đã định nghĩa, việc thay đổi này là thay đổi trực tiếp trên source code, đây là 1 điểm khác so với hàm C bình thường vốn dĩ muốn thực thi logic của hàm C chúng ta phải thực hiện 1 lời gọi hàm. Tất nhiên là đánh đổi lại việc sử dụng macro như vậy cũng sẽ có nhược điểm, phần này chúng ta sẽ tìm hiểu thêm ở phần sau.
 
 >Có 1 điều khá là quan trọng khi sử dụng macro đó là macro chỉ tồn tại đến bước tiền xử lý và compiler sẽ không biết gì về macro cả. Vì vậy khi bạn muốn sử dụng macro thay cho hàm bình thường thì hãy để ý đến việc này. Compiler có thể hiểu được hàm bởi vì hàm là 1 phần trong cú pháp của C. Hàm khi gửi đến compiler nó sẽ được phân tích cú pháp và đưa vào *cây phân tích cú pháp* (parse tree) còn macro chỉ là 1 chỉ thị tiền xử lý và chỉ có Bộ tiền xử lý hiểu nó.
+
+Nào bây giờ chúng ta cùng xem xét 1 ví dụ trông có vẻ nguy hiểm hơn 1 chút:
+
+```c
+#include <stdio.h>
+
+#define PRINT(temp) printf("%d\n", temp);
+#define FORLOOP(i, start, end) \
+  for (int i = start; i <= end; i++) {
+#define ENDLOOP }
+
+int main(void) {
+  FORLOOP(i, 0, 9)
+    PRINT(i)
+  ENDLOOP
+  return 0;
+}
+```
+
+Nhìn qua đoạn code trên chúng ta có thể thấy chúng không đúng với cú pháp của C cho lắm, nhưng mà hãy xem thử mã nguồn sau khi được tiền xử lý xem sao nào
+
+```c
+......
+int main(void) {
+  for (int i = start; i <= end; i++) {
+    printf("%d\n", i);
+  }
+  return 0;
+}
+```
+
+Như chúng ta có thể thấy, sau khi đi qua bước tiền xử lý, mã nguồn đã được xử lý đúng theo cú pháp của C. Đây là 1 ứng dụng quan trọng của macros được dùng để định nghĩa một ngôn ngữ đặc tả chuyên biệt **(Domain Specific Language - DSL)** mới và viết code để sử dụng nó.
+
+>DSLs (Domain Specific Language) có nhiều ứng dụng trong nhiều phần trong 1 dự án. Các framework testing như Google Test (gtest) đã sử dụng rất nhiều DSLs để viết *assertions* (vd: EXPECT_TRUE, SUCCEED, FAIL, ADD_FAILURE_AT,... ), *expectations* và  *test scenarios* ()
+
 
 ## **Variadic macros**
 
