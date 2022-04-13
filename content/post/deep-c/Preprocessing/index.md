@@ -15,7 +15,7 @@ date: "2022-04-13T00:00:00Z"
 lastmod: "2022-04-13T00:00:00Z"
 
 # Is this an unpublished draft?
-draft: true
+draft: false
 
 # Show this page in the Featured widget?
 featured: false
@@ -97,15 +97,31 @@ Bây giờ thêm 1 ví dụ khác để chúng ta hiểu rõ thêm về bước 
 
 ```c
 #include <stdio.h>
-#define y 9
+#define SUM(a,b) a + b
 
-int main(void) {
-    int x = 2;          
-    int s = x + 9;      
-    printf("s= %d", s); 
-    return 0;
+int main(int argc, char **argv)
+{
+  int s = SUM(2,3);
+  printf("s= %d",s); // s= 5
+  return 0;
 }
 ```
+
+Như đoạn code trên chúng ta thấy `SUM` không phải là 1 hàm, nó chỉ trông giống như hàm. Chính xác thì nó chính là 1 macro có nhận tham số truyền vào. Sau thi qua bước  *macro expansion* thì đoạn code trên sẽ được xử lý thành như sau:
+
+```c
+#include <stdio.h>
+#define SUM(a,b) a + b
+
+int main(int argc, char **argv)
+{
+  int s = 2 + 3;      // SUM(2,3) => 2 + 3 
+  printf("s= %d",s);  // s= 5
+  return 0;
+}
+```
+
+Khi chúng ta gọi marco `SUM(2,3)` thì sẽ tương ứng với các tham số truyền vào theo thứ tự như chúng ta đã định nghĩa ở trên, trong đoạn code trên thì `a = 2` và `b = 3` từ đó tất cả các tham số `a` ở phần định nghĩa giá trị của macro sẽ được thay thế bằng `2`, đối với tham số `b` sẽ làm tương tự. Sau khi thay thế hết các giá trị tham số truyền vào thì bước cuối cùng sẽ thay thế tên của macro bằng giá trị macro đã được thay thế tham số, ở đoạn code trên thì `SUM(2,3)` sẽ được thay thế bằng `2 + 3`
 
 ## **Variadic macros**
 
