@@ -97,6 +97,8 @@ int main(int argc, char **argv)
 }
 ```
 
+aaaaaaaaaaaaaaa
+
 ## **Nguồn**
 
 - Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C 1st Edition - Kamran Amini (PDF Book)
