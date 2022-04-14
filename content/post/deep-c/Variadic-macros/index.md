@@ -9,10 +9,10 @@ summary: Qua Phần 1 vừa rồi chúng ta đã tìm hiểu được các kiế
 projects: []
 
 # Date published
-date: "2022-04-15T00:00:00Z"
+date: "2022-04-14T00:00:00Z"
 
 # Date updated
-lastmod: "2022-04-15T00:00:00Z"
+lastmod: "2022-04-14T00:00:00Z"
 
 # Is this an unpublished draft?
 draft: false
