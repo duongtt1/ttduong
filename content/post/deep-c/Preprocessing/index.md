@@ -46,11 +46,11 @@ Tiền xử lý là 1 tính năng mạnh mẽ của ngôn ngữ lập trình C, 
 
 Chỉ thị tiền xử lý là các chỉ thị (lệnh) được cung cấp cho bộ tiền xử lý để xử lý mã nguồn trước khi gửi mã nguồn đi đến compiler. Các chỉ thị này thì sẽ bắt đầu với dấu `#` ở đầu. Bản thân compiler cũng không hiểu các chỉ thị này, mà các chỉ thị này sẽ được xử lý trực tiếp ở Bộ tiền xử lý, sau khi Bộ tiền xử lý đã xử lý xong hết các chỉ thị xuất hiện trong cả file header và file source thì lúc này source code hoàn chỉnh mới được gửi đến cho compiler.
 
-Trong C có khá nhiều loại chỉ thị nhưng trong khuôn khổ nội dung ghi chú này, mình chỉ trình bày các chỉ thị quan trọng hay được xử dụng nhất như định nghĩa macros,... Còn các chỉ thị nâng cao xin hẹn ở một bài viết khác.
+Trong C có khá nhiều loại chỉ thị nhưng trong khuôn khổ nội dung ghi chú này, mình chỉ trình bày các chỉ thị quan trọng hay được xử dụng nhất như định nghĩa macro,... Còn các chỉ thị nâng cao xin hẹn ở một bài viết khác.
 
 ## **Macros**
 
-Bạn đọc hiểu nôm na Macros là 1 cách đặt tên trong C và thường được hay sử dụng cho các ứng dụng dưới đây:
+Bạn đọc hiểu nôm na Macro là 1 cách đặt tên trong C và thường được hay sử dụng cho các ứng dụng dưới đây:
 
 - Định nghĩa hằng
 - Dùng để thay thế cho việc viết 1 hàm bằng C
@@ -59,11 +59,11 @@ Bạn đọc hiểu nôm na Macros là 1 cách đặt tên trong C và thường
 - Sinh code
 - Biên soạn lại code theo điều kiện
 
-Để định nghĩa macros chúng ta sử dụng chỉ thị `#define` chi tiết như nào thì chúng ta sẽ đi vào các ví dụ ở trong các phần tiếp theo ở dưới đây.
+Để định nghĩa macro chúng ta sử dụng chỉ thị `#define` chi tiết như nào thì chúng ta sẽ đi vào các ví dụ ở trong các phần tiếp theo ở dưới đây.
 
-## **Định nghĩa một Macros**
+## **Định nghĩa một Macro**
 
-Một macros được định nghĩa bởi chỉ thị `#define` theo sau chỉ thị này là 1 *tên* của marco và 1 danh sách các tham số (có thể có hoặc không). Đó cũng chính là giá trị được thay thế cho *tên* của marco trong mã nguồn thông qua 1 bước là *macro expansion*. Một macros cũng có thể là *undefined* khi sử dụng chỉ thị `#undef`. Chúng ta cùng đi qua ví dụ dưới để để có thể dễ hình dung hơn:
+Một macro được định nghĩa bởi chỉ thị `#define` theo sau chỉ thị này là 1 *tên* của marco và 1 danh sách các tham số (có thể có hoặc không). Đó cũng chính là giá trị được thay thế cho *tên* của marco trong mã nguồn thông qua 1 bước là *macro expansion*. Một macro cũng có thể là *undefined* khi sử dụng chỉ thị `#undef`. Chúng ta cùng đi qua ví dụ dưới để để có thể dễ hình dung hơn:
 
 ```c
 #include <stdio.h>
@@ -121,7 +121,7 @@ Khi chúng ta gọi marco `SUM(2,3)` thì sẽ tương ứng với các tham s�
 
 Chúng ta có thể sử dụng marco để định nghĩa 1 hàm và dùng nó thay thế cho việc viết 1 hàm C và gọi nó ra. Làm như vậy thì khi đi qua bước tiền xử lý, thì macro sẽ được thay thế bằng logic của hàm mà chúng ta đã định nghĩa, việc thay đổi này là thay đổi trực tiếp trên source code, đây là 1 điểm khác so với hàm C bình thường vốn dĩ muốn thực thi logic của hàm C chúng ta phải thực hiện 1 lời gọi hàm. Tất nhiên là đánh đổi lại việc sử dụng macro như vậy cũng sẽ có nhược điểm, phần này chúng ta sẽ tìm hiểu thêm ở phần sau.
 
->Có 1 điều khá là quan trọng khi sử dụng macro đó là macro chỉ tồn tại đến bước tiền xử lý và compiler sẽ không biết gì về macro cả. Vì vậy khi bạn muốn sử dụng macro thay cho hàm bình thường thì hãy để ý đến việc này. Compiler có thể hiểu được hàm bởi vì hàm là 1 phần trong cú pháp của C. Hàm khi gửi đến compiler nó sẽ được phân tích cú pháp và đưa vào *cây phân tích cú pháp* (parse tree) còn macro chỉ là 1 chỉ thị tiền xử lý và chỉ có Bộ tiền xử lý hiểu nó.
+>Có 1 điều khá là quan trọng khi sử dụng macro đó là macro chỉ tồn tại đến bước tiền xử lý và compiler sẽ không biết gì về macro cả (đối với những trình biên dịch cũ). Vì vậy khi bạn muốn sử dụng macro thay cho hàm bình thường thì hãy để ý đến việc này. Compiler có thể hiểu được hàm bởi vì hàm là 1 phần trong cú pháp của C. Hàm khi gửi đến compiler nó sẽ được phân tích cú pháp và đưa vào *cây phân tích cú pháp* (parse tree) còn macro chỉ là 1 chỉ thị tiền xử lý và chỉ có Bộ tiền xử lý hiểu nó.
 
 Nào bây giờ chúng ta cùng xem xét 1 ví dụ trông có vẻ nguy hiểm hơn 1 chút:
 
@@ -153,7 +153,7 @@ int main(void) {
 }
 ```
 
-Như chúng ta có thể thấy, sau khi đi qua bước tiền xử lý, mã nguồn đã được xử lý đúng theo cú pháp của C. Đây là 1 ứng dụng quan trọng của macros được dùng để định nghĩa một ngôn ngữ đặc tả chuyên biệt **(Domain Specific Language - DSL)** mới và viết code để sử dụng nó.
+Như chúng ta có thể thấy, sau khi đi qua bước tiền xử lý, mã nguồn đã được xử lý đúng theo cú pháp của C. Đây là 1 ứng dụng quan trọng của macro được dùng để định nghĩa một ngôn ngữ đặc tả chuyên biệt **(Domain Specific Language - DSL)** mới và viết code để sử dụng nó.
 
 >DSLs (Domain Specific Language) có nhiều ứng dụng trong nhiều phần trong 1 dự án. Các framework testing như Google Test (gtest) đã sử dụng rất nhiều DSLs để viết **assertions** (vd: EXPECT_TRUE, SUCCEED, FAIL, ADD_FAILURE_AT,... ), **expectations** và  **test scenarios** ()
 
