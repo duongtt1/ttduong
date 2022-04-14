@@ -139,7 +139,7 @@ Trong hàm `main` ở lần gọi `LOOP(copy paste cut)` đầu tiên, chúng ta
 
 >Việc thêm quá số lượng đối số đã định nghĩa như thế này không giống như việc truyền quá số lượng đối số vào hàm và sẽ không bị trình biên dịch báo lỗi bởi vì khi qua tiền xử lý mã nguồn C của chúng ta sẽ không có gì sai cả. Bộ tiền xử lý đơn giản chỉ bỏ qua những đối số bị dư và như vậy nó sẽ không xuất hiện trong mã nguồn cuối cùng.
 
-Có 1 nhược điểm của cách này sẽ làm tăng kích thước mã nguồn và kích thước file thực thi cuối cùng. Nhưng đổi lại cách làm này lại cho hiệu năng nhỉnh hơn so với việc mở 1 vòng lặp `for` hoặc `while`. Chúng ta sẽ cần đánh đổi giữa kích thước file thực thi và hiệu năng. Vấn đề này chúng ta sẽ thảo luận kỹ hơn ở phần sau.
+Có 1 nhược điểm của cách này sẽ làm tăng kích thước mã nguồn và kích thước file thực thi cuối cùng. Nhưng đổi lại cách làm này lại cho hiệu năng nhỉnh hơn so với việc mở 1 vòng lặp `for` hoặc `while`. Chúng ta sẽ cần đánh đổi giữa kích thước file thực thi và hiệu năng. Vấn đề này chúng ta sẽ thảo luận kỹ hơn ở phần 3 **Ưu/Nhược điểm của Macro và Conditional compilation**.
 
 ## **Nguồn**
 
