@@ -97,7 +97,49 @@ int main(int argc, char **argv)
 }
 ```
 
-aaaaaaaaaaaaaaa
+Như vậy là chúng ta đã hiểu cơ bản về Variadic macros, bây giờ chúng ta sẽ đi vào 1 ví dụ khá nổi tiếng về việc sử dụng liên tục các macro để *bắt chước* vòng lặp.
+
+>Trước khi C++ có `foreach`, thư viện boost đã và vẫn đang cung cấp foreach bằng cách sử dụng 1 số của macro. Bạn có thể tìm được định nghĩa của BOOST_FOREACH ở cuối cùng trong file header sau: <https://www.boost.org/doc/libs/1_35_0/boost/foreach.hpp>
+
+```c
+#include <stdio.h>
+
+#define LOOP_3(X, ...) \
+    printf("%s\n", #X);
+
+#define LOOP_2(X, ...) \
+    printf("%s\n", #X); \
+    LOOP_3(__VA_ARGS__)
+
+#define LOOP_1(X, ...) \
+    printf("%s\n", #X); \
+    LOOP_2(__VA_ARGS__)
+
+#define LOOP(...) LOOP_1(__VA_ARGS__)
+
+int main(void) {
+    LOOP(copy paste cut)
+    LOOP(copy, paste, cut)
+    LOOP(copy, paste, cut, select)
+    return 0;
+}
+```
+
+Ví dụ trên đây chỉ là 1 vòng lặp đơn giản và chưa thể so sánh với BOOST_FOREACH được, nhưng mà nó sẽ cho chúng ta 1 số ý tưởng về việc sử dụng variadic macro để lặp lại 1 số lệnh. Hãy xem mã nguồn sau khi được tiền xử lý sẽ ra sao nào:
+
+![ex!](./images/loop-vm.PNG "Mã nguồn sau tiền xử lý ví dụ LOOP")
+
+Như trong mã nguồn sau khi tiền xử lý, chúng ta thấy không có 1 vòng lặp nào cả. Chúng đơn giản chỉ là các câu lệnh `printf`, Bộ tiền xử lý chỉ thay thế các macro bằng các giá trị mà ta đã định nghĩa. Như vậy để có vòng lặp với 1000 lần thì cũng sẽ tương đương với 1000 lệnh trong C. Chúng ta sẽ không có bất kỳ vòng lặp nào trong mã nguồn cuối cùng gửi đến conpiler cả.
+
+Trong hàm `main` ở lần gọi `LOOP(copy paste cut)` đầu tiên, chúng ta truyền vào là `"copy paste cut"` chúng không có dấu `,` để phân chia các đối số, nên Bộ tiền xử lý coi như nó là 1 đối số duy nhất và nó được thay thế vào vòng `LOOP1`, `LOOP2` và `LOOP3` vì không có đối số nên chúng sẽ được thay thế bằng `""` tức là không có gì cả.
+
+Ở lần gọi `LOOP(copy, paste, cut)` thứ 2, chúng ta cung cấp đầy đủ 3 đối số và lần lượt `copy` sẽ được truyền vào đối số cho `LOOP1`, `paste` làm đối số cho `LOOP2` và `cut` làm đối số cho `LOOP3` hoàn toàn theo thứ tự tương ứng. Như vậy thì khi chạy sẽ in ra 3 dòng `copy`, `paste`, `cut`.
+
+Ở lần gọi `LOOP(copy, paste, cut, select)` chúng ta đã truyền tới 4 giá trị, nhưng sự thật là chỉ có 3 trong số đó là đã được xử lý và cho ra kết quả giống với cách thứ 2. Vì chúng ta chỉ định macro lặp được 3 lần nên chúng chỉ có thể lặp 3 lần, Các đối số mở rộng từ thứ 4 trở đi sẽ bị bỏ qua.
+
+>Việc thêm quá số lượng đối số đã định nghĩa như thế này không giống như việc truyền quá số lượng đối số vào hàm và sẽ không bị trình biên dịch báo lỗi bởi vì khi qua tiền xử lý mã nguồn C của chúng ta sẽ không có gì sai cả. Bộ tiền xử lý đơn giản chỉ bỏ qua những đối số bị dư và như vậy nó sẽ không xuất hiện trong mã nguồn cuối cùng.
+
+Có 1 nhược điểm của cách này sẽ làm tăng kích thước mã nguồn và kích thước file thực thi cuối cùng. Nhưng đổi lại cách làm này lại cho hiệu năng nhỉnh hơn so với việc mở 1 vòng lặp `for` hoặc `while`. Chúng ta sẽ cần đánh đổi giữa kích thước file thực thi và hiệu năng. Vấn đề này chúng ta sẽ thảo luận kỹ hơn ở phần sau.
 
 ## **Nguồn**
 
