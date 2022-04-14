@@ -218,7 +218,7 @@ Trong đoạn code định nghĩa macro trên, ngoài toán tử `#` thì còn c
 
 Trên đây chỉ là những ví dụ cơ bản nhằm mục đích giới thiệu là chính. Bản thân ngôn ngữ C cung cấp cho chúng ta nhiều "vũ khí" mạnh mẽ, nhưng tuỳ vào từng trường hợp mà sẽ có cách sử dụng khác nhau. Các ứng dụng thực tế của chúng trong các mã nguồn dự án viết bằng C có rất nhiều, nếu có dịp nào đó thì chúng ta sẽ đi tìm hiểu thêm về chủ đề này. Còn bây giờ có lẽ Phần 1 của chủ đề macro nên tạm dừng ở đây, ở Phần 2 chúng ta sẽ đi tìm hiểu 1 loại macro khác đó là *Variadic macros*.
 
-## **Nguồn tham khảo**
+## **Nguồn**
 
 - Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C 1st Edition - Kamran Amini (PDF Book)
 - <https://en.cppreference.com/w/c/preprocessor>
