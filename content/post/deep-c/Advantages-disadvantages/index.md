@@ -40,7 +40,7 @@ categories:
 
 >Nếu bạn chưa đọc Phần 1 và Phần 2 thì nên đọc qua 2 phần này trước nhé, vì ở 2 phần trước chúng ta đã đi tìm hiểu khá kỹ lưỡng về macro. Còn nếu bạn không thích đọc 2 phần trước thì cũng không sao cả, cứ đọc luôn phần 3 được :v
 
-## **Ưu và Nhược điểm của macro**
+## **Tản mạn về macro**
 
 Macro có một đặc tính rất đặc biệt đó là sau quá trình tiền xử lý thì toàn bộ các macro sẽ được thay thế bằng các dòng\đoạn code khác. Điều này làm cho mã nguồn trở nên dài hơn và tuần tự. Cũng vì vậy mà mã nguồn tại thời điểm biên dịch sẽ không có module nào cả. Nếu chính ta là tác giả của mã nguồn trên thì mọi chuyện có vẻ như sẽ đỡ căng thẳng khi chúng ta vẫn sẽ nhớ được các logic về macro mà chúng ta đã định nghĩa, nhưng trong file mã máy thực thi thì logic này lại không hề xuất hiện vì vậy nên vấn đề sẽ phát sinh đối với các đồng nghiệp của chúng ta. Và các vấn đề liên quan đến thiết kế phần mềm cũng sẽ bắt đầu từ đây.
 
