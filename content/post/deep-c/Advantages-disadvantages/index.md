@@ -1,9 +1,9 @@
 ---
 title: Tiền xử lý trong C (Phần 3)
-subtitle: Qua 2 phần vừa rồi chúng ta đã tìm hiểu được các kiến thức cơ bản của macro, ở Phần 3 này chúng ta lại tiếp tục đi tìm hiểu về ưu nhược điểm của nó để có thể sử dụng nó tốt nhất.
+subtitle: Qua 2 phần vừa rồi chúng ta đã tìm hiểu được các kiến thức cơ bản của macro, ở Phần 3 này chúng ta sẽ tản mạn 1 chút về các vấn đề khi sử dụng nó để có thể sử dụng nó tốt nhất.
 
 # Summary for listings and search engines
-summary: Qua 2 phần vừa rồi chúng ta đã tìm hiểu được các kiến thức cơ bản của macro, ở Phần 3 này chúng ta lại tiếp tục đi tìm hiểu về ưu nhược điểm của nó để có thể sử dụng nó tốt nhất. 
+summary: Qua 2 phần vừa rồi chúng ta đã tìm hiểu được các kiến thức cơ bản của macro, ở Phần 3 này chúng ta sẽ tản mạn 1 chút về các vấn đề khi sử dụng nó để có thể sử dụng nó tốt nhất. 
 
 # Link this post with a project
 projects: []
@@ -64,7 +64,7 @@ Nếu vậy thì việc sử dụng các macro đang đối đầu lại với c
 
 Có 1 điểm nữa là để đạt được hiệu suất tốt nhất có thể thì chúng ta nên để CPU thực thi các lệnh 1 cách tuyến tính và cố gắng đừng bắt CPU phải nhảy qua nhảy lại giữa các phần khác nhau trong mã nguồn. Để làm được điều này thì có đa dạng cách như sửa đổi thuật toán,... Nhưng điều này lại bị mẫu thuẫn với các tính chất của thiết kế phần mềm như chúng ta đã thảo luận ở trước, việc thiết kế luôn mong muốn chia nhỏ và hệ thống hoá các thành phần trong phần mềm điều này lại làm nó mất đi tính tuyến tính. Vì vậy, việc đánh đổi giữa hiệu năng và thiết kế này cần được quan tâm và cân đối cho từng vấn đề riêng biệt.
 
-Còn 1 ứng dụng phổ biến nữa của macro đó là *DSLs*, *Microsoft MFC*, *Qt*, *Linux Kernel*, and *wxWidgets* và hàng nghìn dự án khác đang sử dụng macro để tạo ra các *DSLs* của riêng họ. Hầu hết đều là các dự án C++ nhưng vẫn sử dụng tính năng này của C để tạo ra các bộ API.
+Còn 1 ứng dụng phổ biến nữa của macro đó là *DSLs*. *Microsoft MFC*, *Qt*, *Linux Kernel*, and *wxWidgets* và hàng nghìn dự án khác đang sử dụng macro để tạo ra các *DSLs* của riêng họ. Hầu hết đều là các dự án C++ nhưng vẫn sử dụng tính năng này của C để tạo ra các bộ API.
 
 Qua các thảo luận trên thì có thể thấy macro tuy có nhiều ưu điểm nhưng khi sử dụng chúng ta cần xem xét cẩn thận tuỳ vào từng trường hợp cụ thể. Nếu quá lạm dụng macro có thể gây ra nhiều vấn đề khó khăn không chỉ cho bạn và còn khó khăn cho cả đồng đội của bạn nữa.
 
