@@ -155,9 +155,9 @@ int main(void) {
 
 Như chúng ta có thể thấy, sau khi đi qua bước tiền xử lý, mã nguồn đã được xử lý đúng theo cú pháp của C. Đây là 1 ứng dụng quan trọng của macro được dùng để định nghĩa một ngôn ngữ đặc tả chuyên biệt **(Domain Specific Language - DSL)** mới và viết code để sử dụng nó.
 
->DSLs (Domain Specific Language) có nhiều ứng dụng trong nhiều phần trong 1 dự án. Các framework testing như Google Test (gtest) đã sử dụng rất nhiều DSLs để viết **assertions** (vd: EXPECT_TRUE, SUCCEED, FAIL, ADD_FAILURE_AT,... ), **expectations** và  **test scenarios** ()
+>DSLs (Domain Specific Language) có nhiều ứng dụng trong nhiều phần trong 1 dự án. Các framework testing như Google Test (gtest) đã sử dụng rất nhiều DSLs để viết **assertions** (vd: EXPECT_TRUE, SUCCEED, FAIL, ADD_FAILURE_AT,... ), **expectations** và  **test scenarios**
 
-Đến đây cũng khá là dài rồi, bây giờ chúng ta sẽ đi tìm hiểu thêm về 1 ví dụ cuối cùng trong phần này, Phần macros này sẽ có 3-4 phần, đây là phần 1, ở 2 phần sau chúng ta sẽ đi tìm hiểu tiếp về  **Variadic macros** và **Ưu Nhược điểm khi sử dụng macros** Còn bây giờ cùng xem xét về đoạn code phía dưới nào.
+Đến đây cũng khá là dài rồi, bây giờ chúng ta sẽ đi tìm hiểu thêm về 1 ví dụ cuối cùng trong phần này, Phần macros này sẽ có 3-4 phần, đây là phần 1, ở 2 phần sau chúng ta sẽ đi tìm hiểu tiếp về  **Variadic macros** và **Tản mạn về macros** Còn bây giờ cùng xem xét về đoạn code phía dưới nào.
 
 ```c
 // build: gcc *namefile*.c
