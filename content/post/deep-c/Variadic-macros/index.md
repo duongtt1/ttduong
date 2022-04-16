@@ -139,7 +139,72 @@ Trong hàm `main` ở lần gọi `LOOP(copy paste cut)` đầu tiên, chúng ta
 
 >Việc thêm quá số lượng đối số đã định nghĩa như thế này không giống như việc truyền quá số lượng đối số vào hàm và sẽ không bị trình biên dịch báo lỗi bởi vì khi qua tiền xử lý mã nguồn C của chúng ta sẽ không có gì sai cả. Bộ tiền xử lý đơn giản chỉ bỏ qua những đối số bị dư và như vậy nó sẽ không xuất hiện trong mã nguồn cuối cùng.
 
-Có 1 nhược điểm của cách này sẽ làm tăng kích thước mã nguồn và kích thước file thực thi cuối cùng. Nhưng đổi lại cách làm này lại cho hiệu năng nhỉnh hơn so với việc mở 1 vòng lặp `for` hoặc `while`. Chúng ta sẽ cần đánh đổi giữa kích thước file thực thi và hiệu năng. Vấn đề này chúng ta sẽ thảo luận kỹ hơn ở phần 3 **Tản mạn về macro**.
+Có 1 nhược điểm của cách này sẽ làm tăng kích thước mã nguồn và kích thước file thực thi cuối cùng. Nhưng đổi lại cách làm này lại cho hiệu năng nhỉnh hơn so với việc mở 1 vòng lặp `for` hoặc `while`. Chúng ta sẽ cần đánh đổi giữa kích thước file thực thi và hiệu năng. Vấn đề này chúng ta sẽ thảo luận kỹ hơn ở phần 3 **Tản mạn về macro**. Tiếp theo chúng ta sẽ đi thêm về 1 loại macro nữa trước khi kết thúc bài viết này vì nó cũng khá dài rồi.
+
+## **Conditional compilation**
+
+*Conditional compilation* là một tính năng độc đáo khác của C. Nó cung cấp cho chúng ta công cụ để có thể quyết định mã nguồn sau khi tiền xử lý sẽ như thế nào tuỳ theo các điều kiện. Để sử dụng được *Conditional compilation* thì chúng ta có thể tham khảo qua các chỉ thị sau:
+
+- #ifdef
+- #ifndef
+- #else
+- #elif
+- #endif
+
+Lý thuyết thì nó vậy, bây giờ chúng ta cùng đi vào ví dụ để xem nó hoạt động như thế nào nhé
+
+```c
+#define CONDITION
+int main(int argc, char** argv) {
+#ifdef CONDITION
+  printf("Kitaro Blog CONDITION");
+#endif
+  printf("Kitaro Blog NOT CONDITION");
+  return 0;
+}
+```
+
+Khi mã nguồn trên được đưa vào Bộ tiền xử lý thì Bộ tiền xử lý sẽ kiểm tra xem macro `CONDITION` đã được định nghĩa hay chưa, nếu `CONDITION` đã được định nghĩa rồi thì tất cả code ở trong khối `#ifdef` và `#endif` sẽ được sao chép đến mã nguồn cuối cùng. Còn nếu `CONDITION` chưa được định nghĩa thì đoạn code  ở trong khối `#ifdef` và `#endif` sẽ bị bỏ qua và tất nhiên là chúng sẽ không xuất hiện ở trong mã nguồn cuối cùng rồi.
+
+>Có 1 điểm chú ý đó là khi chúng ta định nghĩa 1 macro mà không cần khai báo bất kỳ giá trị nào đi kèm với macro đó thì vẫn được tính là hợp lệ.
+
+Sau quá trình tiền xử lý thì mã nguồn của ví dụ trên sẽ như sau:
+
+```c
+int main(int argc, char** argv) {
+  printf("Kitaro Blog CONDITION");
+  printf("Kitaro Blog NOT CONDITION");
+  return 0;
+}
+```
+
+Bạn cũng có thể định nghĩa các macro bằng lệnh khi build mã nguồn bằng GCC hoặc CLang với đối số `-D`. Ví dụ:
+
+```bash
+gcc -DCONDITION main.c
+```
+
+Một chỉ thị cực kỳ phổ biến đó nữa là `#ifndef`, chúng được sử dụng để bảo vệ các file header, tránh việc các file header sẽ bị đưa vào quá trình tiền xử lý nhiều hơn một lần. Trong hầu hết các dự án C/C++ chúng ta sẽ bắt gặp chỉ thị này ở ngay đầu file header. ví dụ
+
+```c
+#ifndef FOO_H
+#define FOO_H
+  ...code
+#endif
+```
+
+Cách hoạt động của nó thì cũng khá đơn giản, ở lần đầu tiên thì `FOO_H` chưa được định nghĩa thì nó đoạn code ở trong `#ifndef` và `#endif` sẽ được xử lý, sau lần này thì `FOO_H` đã được định nghĩa, vì vậy đoạn code ở trong `#ifndef` và `#endif` sẽ không thực hiện nữa.
+
+Ngoài chỉ thị trên chúng ta có thể sử dụng 1 chỉ thị là `#pragma once` với công dụng tương tự. Điều khác biệt của `#ifndef` và `#pragma once` đó chính là `#pragma once` không nằm trong *bộ tiêu chuẩn C* (C standard) mặc dù thực tế là nó được hỗ trợ bởi hầu hết các bộ tiền xử lý của C.
+
+Ví dụ lại code trên bằng việc sử dụng `#pragma once` như sau:
+
+```c
+#pragma once
+...code
+```
+
+Đến đây cơ bản là cũng đủ cơ bản để chúng ta có thể làm việc với macro được rồi. Hẹn bạn đọc ở **Phần 3 Tản mạn về macro** 
 
 ## **Nguồn**
 
