@@ -9,10 +9,10 @@ summary: Verilog là ngôn ngữ mô tả phần cứng (hardware description la
 projects: []
 
 # Date published
-date: "2022-04-11T00:00:00Z"
+date: "2022-04-17T00:00:00Z"
 
 # Date updated
-lastmod: "2022-04-11T00:00:00Z"
+lastmod: "2022-04-17T00:00:00Z"
 
 # Is this an unpublished draft?
 draft: true

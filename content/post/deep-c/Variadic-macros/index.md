@@ -204,7 +204,7 @@ Ví dụ lại code trên bằng việc sử dụng `#pragma once` như sau:
 ...code
 ```
 
-Đến đây cơ bản là cũng đủ cơ bản để chúng ta có thể làm việc với macro được rồi. Hẹn bạn đọc ở **Phần 3 Tản mạn về macro** 
+Đến đây cơ bản là cũng đủ cơ bản để chúng ta có thể làm việc với macro được rồi. Hẹn bạn đọc ở **Phần 3 Tản mạn về macro**.
 
 ## **Nguồn**
 
