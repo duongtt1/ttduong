@@ -1,6 +1,6 @@
 ---
 title: Thiết kế hệ thống số với HDL (P2)
-subtitle: Trước khi Verilog-HDL ra đời tất cả các thiết kế bất kể là phức tạp hay đơn giản đều dựa trên việc thiết kế schematics. Điều này làm khó khăn hơn cho việc xác minh và dễ xảy ra lỗi, chu kỳ phát triển lại tốn nhiều thời gian mà công việc lại tẻ nhạt, chỉ đơn thuần design...verification.
+subtitle: Quy trình thiết kế hệ thống số với Verilog-HDL phần 2
 
 # Summary for listings and search engines
 summary: Quy trình thiết kế hệ thống số với Verilog-HDL phần 2 
