@@ -41,7 +41,7 @@ categories:
 
 >Trước khi bắt đầu hãy chắc rằng bạn đã biết qua về kiến thức cơ bản của **Nhập môn mạch số** và **Thiết kế luận lý số**.  Bài viết này không tập trung vào các kiến thức mạch số cơ bản mà chỉ tập trung vào việc sử dụng Verilog để hiện thực hóa chúng.
 
-## **Tổng quan**
+## **Các kiểu dữ liệu trong Verilog**
 
 ## **Nguồn**
 
