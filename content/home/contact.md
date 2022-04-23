@@ -25,7 +25,7 @@ content:
       captcha: false
 
   # Contact details (edit or remove options as required)
-  email: kitaroabe@gmail.com
+  email: kitaro183@gmail.com
 
 design:
   columns: '2'
