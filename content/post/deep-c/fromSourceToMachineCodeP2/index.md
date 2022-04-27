@@ -81,9 +81,9 @@ void swapInt(int *a, int *b){
 }
 
 void sortInt(int* a, type_compare type){
-    for (int i = 0; i < 5-1; i++)
+    for (int i = 0; i < N_ARRAY-1; i++)
     {
-        for (int j = i+1; j < 5; j++)
+        for (int j = i+1; j < N_ARRAY; j++)
         {
             if (type == ASCENDING ? a[i] > a[j] : a[i] < a[j])
             {
@@ -100,8 +100,10 @@ void sortInt(int* a, type_compare type){
 #include <stdio.h>
 #include "sortint.h"
 
+#define N_ARRAY 5
+
 int main(){
-    int *arr = (int *)malloc( 5 * sizeof(int));
+    int *arr = (int *)malloc( N_ARRAY * sizeof(int));
     arr[0]=12;
     arr[1]=5;
     arr[2]=20;
@@ -110,7 +112,7 @@ int main(){
 
     sortInt(arr, DECREASE);
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < N_ARRAY; i++)
     {
         printf("%d", arr[i]);
     }
