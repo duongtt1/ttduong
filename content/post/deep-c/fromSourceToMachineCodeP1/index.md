@@ -161,28 +161,28 @@ gcc -S sortint.c
 Kết quả thu được file `sortint.s` như sau, tất nhiên là mình đã xoá bớt đi rồi chứ nó dài lắm :) chủ yếu show ra để xem cho vui thoai :))))
 
 ```asm
-  .file	"sortint.c"
+  .file "sortint.c"
     .text
-    .globl	swapInt
-    .def	swapInt;	.scl	2;	.type	32;	.endef
-    .seh_proc	swapInt
+    .globl swapInt
+    .def swapInt; .scl 2; .type 32; .endef
+    .seh_proc swapInt
   swapInt:
     ...
   sortInt:
-    pushq	%rbp
-    .seh_pushreg	%rbp
-    movq	%rsp, %rbp
-    .seh_setframe	%rbp, 0
-    subq	$48, %rsp
-    .seh_stackalloc	48
+    pushq %rbp
+    .seh_pushreg %rbp
+    movq %rsp, %rbp
+    .seh_setframe %rbp, 0
+    subq $48, %rsp
+    .seh_stackalloc 48
     .seh_endprologue
-    movq	%rcx, 16(%rbp)
-    movl	%edx, 24(%rbp)
-    movl	%r8d, 32(%rbp)
-    movl	$0, -4(%rbp)
-    jmp	.L3
+    movq %rcx, 16(%rbp)
+    movl %edx, 24(%rbp)
+    movl %r8d, 32(%rbp)
+    movl $0, -4(%rbp)
+    jmp .L3
 ...
-    .ident	"GCC: (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 7.3.0"
+    .ident "GCC: (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 7.3.0"
 ```
 
 Như là 1 bước trong quá trình biên dịch, conpiler sẽ phân tích cú pháp của translation unit và biên dịch nó thành tập hợp các lệnh assembly tương ứng phù hợp theo từng kiến trúc phần cứng khác nhau. Tức là chung 1 mã nguồn C nhưng sẽ biên dịch ra các mã assembly khác nhau tuỳ thuộc vào kiến trúc phần cứng. Ví dụ tập hợp các mã lệnh assembly của kiến trúc ARM 64-bit sẽ khác so với kiến trúc AMD 64-bit vì vậy để chương trình C chạy được trên các kiến trúc phần cứng này thì cần biên dịch các tập lệnh Assembly tương ứng. *Mục đích cuối cùng thì cũng chỉ vì để CPU có thể hiểu được và thực hiện*.
