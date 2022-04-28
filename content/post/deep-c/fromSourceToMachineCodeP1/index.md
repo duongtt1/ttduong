@@ -1,9 +1,9 @@
 ---
-title: Từ mã nguồn ra mã máy (P1)
-subtitle: Ở trong seri này thì chúng ta cùng nhau tìm hiểu về quá trình bắt đầu từ viết code C cho đến các bước Preprocessing, compilation, Asemble, Linking để rồi ra được 1 file thực thi cuối cùng.
+title: Từ mã nguồn ra mã máy (Phần 1)
+subtitle: Ở trong chuỗi bài này thì chúng ta cùng nhau tìm hiểu về quá trình bắt đầu từ viết code C cho đến các bước Preprocessing, compilation, Asemble, Linking để rồi ra được 1 file thực thi cuối cùng.
 
 # Summary for listings and search engines
-summary: Ở trong seri này thì chúng ta cùng nhau tìm hiểu về quá trình bắt đầu từ viết code C cho đến các bước Preprocessor, Compiler, Assemblers, Linker để rồi ra được 1 file thực thi cuối cùng. 
+summary: Ở trong chuỗi bài này thì chúng ta cùng nhau tìm hiểu về quá trình bắt đầu từ viết code C cho đến các bước Preprocessor, Compiler, Assemblers, Linker để rồi ra được 1 file thực thi cuối cùng. 
 
 # Link this post with a project
 projects: []
