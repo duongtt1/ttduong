@@ -42,7 +42,7 @@ Trong phần trước chúng ta đã tìm hiểu về Preprocessing và Compilat
 
 ## **Asemble**
 
-Sau khi quá trình compilation thực hiện xong thì 
+Sau khi quá trình compilation thực hiện xong thì
 
 ## **Linking**
 
