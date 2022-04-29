@@ -157,7 +157,7 @@ Như chúng ta có thể thấy, sau khi đi qua bước tiền xử lý, mã ng
 
 >DSLs (Domain Specific Language) có nhiều ứng dụng trong nhiều phần trong 1 dự án. Các framework testing như Google Test (gtest) đã sử dụng rất nhiều DSLs để viết **assertions** (vd: EXPECT_TRUE, SUCCEED, FAIL, ADD_FAILURE_AT,... ), **expectations** và  **test scenarios**
 
-Đến đây cũng khá là dài rồi, bây giờ chúng ta sẽ đi tìm hiểu thêm về 1 ví dụ cuối cùng trong phần này, Phần macros này sẽ có 3-4 phần, đây là phần 1, ở 2 phần sau chúng ta sẽ đi tìm hiểu tiếp về  **Variadic macros** và **Tản mạn về macros** Còn bây giờ cùng xem xét về đoạn code phía dưới nào.
+Đến đây cũng khá là dài rồi, bây giờ chúng ta sẽ đi tìm hiểu thêm về 1 ví dụ cuối cùng trong phần này, Phần macros này sẽ có 3 phần, đây là phần 1, ở 2 phần sau chúng ta sẽ đi tìm hiểu tiếp về  **Variadic macros** Còn bây giờ cùng xem xét về đoạn code phía dưới nào.
 
 ```c
 // build: gcc *namefile*.c
@@ -216,7 +216,7 @@ Trong bước *macros expansion* toán tử `#` sẽ biến đổi tham số tru
 
 Trong đoạn code định nghĩa macro trên, ngoài toán tử `#` thì còn có 1 toán tử nữa là `##`. Đối với toán tử `##` thì cách hoạt động của nó là nối tham số với 1 thành phần khác trong định nghĩa của macro và thường là sẽ tạo thành 1 tên biến. Quay lại ví dụ trên ở dòng `#define CMD(NAME) char NAME##_cmd[256] = "";` với đối số truyền vào là `CMD(delete)` thì khi đi vào bước tiền xử lý `char NAME##_cmd[256]` sẽ được thay thế bằng `char delete_cmd[256]`.
 
-Trên đây chỉ là những ví dụ cơ bản nhằm mục đích giới thiệu là chính. Bản thân ngôn ngữ C cung cấp cho chúng ta nhiều "vũ khí" mạnh mẽ, nhưng tuỳ vào từng trường hợp mà sẽ có cách sử dụng khác nhau. Các ứng dụng thực tế của chúng trong các mã nguồn dự án viết bằng C có rất nhiều, nếu có dịp nào đó thì chúng ta sẽ đi tìm hiểu thêm về chủ đề này. Còn bây giờ có lẽ Phần 1 của chủ đề macro nên tạm dừng ở đây, ở Phần 2 chúng ta sẽ đi tìm hiểu 1 loại macro khác đó là *Variadic macros*.
+Trên đây chỉ là những ví dụ cơ bản nhằm mục đích giới thiệu là chính. Bản thân ngôn ngữ C cung cấp cho chúng ta nhiều "vũ khí" mạnh mẽ, nhưng tuỳ vào từng trường hợp mà sẽ có cách sử dụng khác nhau. Các ứng dụng thực tế của chúng trong các mã nguồn dự án viết bằng C có rất nhiều, nếu có dịp nào đó thì chúng ta sẽ đi tìm hiểu thêm về chủ đề này. Còn bây giờ Phần 1 của chủ đề macro nên tạm dừng ở đây, ở Phần 2 chúng ta sẽ đi tìm hiểu 1 loại macro khác đó là *Variadic macros*.
 
 ## **Nguồn tham khảo**
 

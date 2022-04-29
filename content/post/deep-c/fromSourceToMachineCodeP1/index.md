@@ -54,8 +54,8 @@ Chúng ta viết 1 ví dụ đơn giản để thực hiện compile như sau:
 
 ```c
 // sortint.h
-#ifndef EXAMPLE_SORT
-#define EXAMPLE_SORT
+#ifndef SORTINT
+#define SORTINT
 #include <stdlib.h>
 
 typedef enum {
@@ -185,17 +185,17 @@ Kết quả thu được file `sortint.s` như sau, tất nhiên là mình đã 
     .ident "GCC: (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 7.3.0"
 ```
 
-Như là 1 bước trong quá trình biên dịch, conpiler sẽ phân tích cú pháp của translation unit và biên dịch nó thành tập hợp các lệnh assembly tương ứng phù hợp theo từng kiến trúc phần cứng khác nhau. Tức là chung 1 mã nguồn C nhưng sẽ biên dịch ra các mã assembly khác nhau tuỳ thuộc vào kiến trúc phần cứng. Ví dụ tập hợp các mã lệnh assembly của kiến trúc ARM 64-bit sẽ khác so với kiến trúc AMD 64-bit vì vậy để chương trình C chạy được trên các kiến trúc phần cứng này thì cần biên dịch các tập lệnh Assembly tương ứng. *Mục đích cuối cùng thì cũng chỉ vì để CPU có thể hiểu được và thực hiện*.
+Như là 1 bước trong quá trình biên dịch, conpiler sẽ phân tích cú pháp của translation unit và biên dịch nó thành tập hợp các lệnh assembly tương ứng phù hợp theo từng kiến trúc phần cứng khác nhau. Tức là chung 1 mã nguồn C nhưng sẽ biên dịch ra các mã assembly tương ứng với kiến trúc phần cứng mục tiêu. Ví dụ tập hợp các mã lệnh assembly của kiến trúc ARM 64-bit sẽ khác so với kiến trúc AMD 64-bit vì vậy để chương trình C chạy được trên các kiến trúc phần cứng này thì cần biên dịch các tập lệnh Assembly tương ứng.
 
 >Chúng ta không nhất thiết phải dùng 1 máy host là ARM 32-bit để biến dịch mã nguồn C chạy trên ARM 32-bit. Chúng ta vẫn có thể sử dụng máy host Intel x86-64 để biên dịch mã nguồn C chạy bên trên ARM 32-bit bằng cách sử dụng compiler dành cho ARM 32-bit như *arm-linux-gnueabi-gcc,...*
 
-Việc phải biên dịch đúng tập lệnh assembly cho từng kiến trúc phần cứng là 1 thử thách thật sự trong quá trình compilation. Để xử lý vấn đề này thì gcc và nhiều loại compiler khác đã chia quá trình compilation thành 2 bước: *compiler frontend* và *compiler backend*. Ở bước *compiler frontend* sẽ tiến hành phân tích cú pháp của translation unit thành *Abstract Syntax Tree (AST)* ở bước này chưa cần quan tâm tới kiến trúc tập lệnh của phần cứng sau đó đến bước *compiler backend* sẽ dựa trên Abstract Syntax Tree (AST) được tạo ra ở bước trước để sinh ra code assembly theo đúng tập lệnh assembly tương ứng với kiến trúc phần cứng yêu cầu.
+Việc phải biên dịch đúng tập lệnh assembly cho từng kiến trúc phần cứng là 1 thử thách thật sự trong quá trình compilation. Để xử lý vấn đề này thì gcc và nhiều loại compiler khác đã chia quá trình compilation thành 2 bước: *compiler frontend* và *compiler backend*. Ở bước *compiler frontend* sẽ tiến hành phân tích cú pháp của translation unit thành *Abstract Syntax Tree (AST)* ở bước này chưa cần quan tâm tới kiến trúc tập lệnh của phần cứng sau đó đến bước *compiler backend* sẽ dựa trên Abstract Syntax Tree (AST) được tạo ra ở bước trước đó để sinh ra code assembly theo đúng tập lệnh assembly tương ứng với kiến trúc phần cứng yêu cầu.
 
-Như đã thảo luận ở phần bên trên, bước *compiler frontend* sẽ thực hiện phân tích cú pháp của translation unit và tạo ra 1 cây cấu trúc dữ liệu trung gian. Trình biên dịch tạo ra cây cấy trúc dữ liệu trung gian này bằng cách phân tích mã nguồn C theo cú pháp của C và lưu kết quả phân tích được vào 1 cây cú pháp và câu cú pháp này thường được gọi là *Abstract syntax tree (AST)*.
+Như đã thảo luận ở phần bên trên, bước *compiler frontend* sẽ thực hiện phân tích cú pháp của translation unit và tạo ra 1 cây cấu trúc dữ liệu trung gian. Trình biên dịch tạo ra cây cấu trúc dữ liệu trung gian này bằng cách phân tích mã nguồn C theo cú pháp của C và lưu kết quả phân tích được vào 1 cây cú pháp và câu cú pháp này thường được gọi là *Abstract syntax tree (AST)*.
 
 >AST có thể được tạo ra bởi nhiều ngôn ngữ lập trình khác nhau không chỉ riêng C vì vậy cấu trúc của AST độc lập hoàn toàn với cấu trúc cú pháp của C. Đó là lý do tại sao chúng ta có thể thấy *GNU Compiler Collection (GCC)* hay *Low-level Virtual Machine (LLVM)* như là 1 tập hợp các trình biên dịch cho nhiều ngôn ngữ lập trình ngoài C, C++ như Java, Fortran,...
 
-Khi mà *compiler frontend* thực hiện xong tức là AST đã được tạo ra thì lúc này *compiler backend* bắt đầu làm việc, việc đầu tiên mà nó làm đó là tiến hành tối ưu hoá AST được tạo ra từ bước trước sau đó tiến hành sinh code Assembly trên AST đã được tối ưu cho từng kiến trúc phần cứng khác nhau. Để hiểu rõ hơn AST là cái gì thì chúng ta sẽ nhìn qua 1 AST thực tế được biên dịch sẽ trong như thế nào nhé.
+Khi mà *compiler frontend* thực hiện xong tức là AST đã được tạo ra thì lúc này *compiler backend* bắt đầu làm việc, việc đầu tiên mà nó làm đó là tiến hành tối ưu hoá AST được tạo ra từ bước trước sau đó tiến hành sinh code Assembly trên AST đã được tối ưu cho kiến trúc phần cứng mục tiêu. Để hiểu rõ hơn AST là cái gì thì chúng ta sẽ nhìn qua 1 AST thực tế được biên dịch sẽ trong như thế nào nhé.
 
 ```c
 int main() {
@@ -205,7 +205,7 @@ int main() {
 }
 ```
 
-Chúng ta sẽ tiến hành kết xuất AST trong quá trình biên dịch ví dụ ở trên và tiến hành so sánh nó với source code, để làm được việc này dễ dành thì chúng ta sẽ sử dụng *clang* để tiến hành xuất AST, tất nhiên là GCC cũng làm được việc này nhưng ở đây mình chọn *clang* vì nó hỗ trợ làm việc này tốt hơn gcc khá nhiều :)) lệnh xuất AST như sau:
+Chúng ta sẽ tiến hành kết xuất AST trong quá trình biên dịch ví dụ ở trên và tiến hành so sánh nó với source code, để làm được việc này dễ dành thì chúng ta sẽ sử dụng *clang* để tiến hành xuất AST, tất nhiên là GCC cũng làm được việc này nhưng vì *clang* nó hỗ trợ làm việc này tốt hơn gcc khá nhiều :)) nên thôi chúng ta dùng luôn *clang* cho nó lẹ. Lệnh xuất AST như sau:
 
 ```bash
 clang -Xclang -ast-dump -fsyntax-only example_ast.c

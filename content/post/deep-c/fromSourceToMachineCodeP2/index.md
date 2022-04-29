@@ -1,6 +1,6 @@
 ---
 title: Từ mã nguồn ra mã máy (Phần 2)
-subtitle: Ở trong chuỗi bài này thì chúng ta cùng nhau tìm hiểu về quá trình bắt đầu từ viết code C cho đến các bước Preprocessing, compilation, Asemble, Linking để rồi ra được 1 file thực thi cuối cùng.
+subtitle: Trong phần trước chúng ta đã tìm hiểu về Preprocessing và Compilation tiếp theo ở bài viết này thì chúng ta sẽ tiếp tục tìm hiểu thêm 2 bước còn lại là Asemble và Linking.
 
 # Summary for listings and search engines
 summary: Ở trong chuỗi bài này thì chúng ta cùng nhau tìm hiểu về quá trình bắt đầu từ viết code C cho đến các bước Preprocessor, Compiler, Assemblers, Linker để rồi ra được 1 file thực thi cuối cùng. 
@@ -37,8 +37,6 @@ tags:
 categories:
 - C
 ---
-
-Trong phần trước chúng ta đã tìm hiểu về Preprocessing và Compilation tiếp theo ở bài viết này thì chúng ta sẽ tiếp tục tìm hiểu thêm 2 bước còn lại là Asemble và Linking.
 
 ## **Asemble**
 
@@ -89,19 +87,19 @@ main.c:(.text.startup+0x17): undefined reference to `malloc'
 
 Các bạn thấy đấy, liên kết đã thất bại rồi. Tuy biết là lệnh nó như thế nhưng mà thực tế thì để chạy trực tiếp `ld` thì cũng không dễ dành cho lắm :))) đó là lý do vì sao ở phần assemble ở trên việc chạy `as` trực tiếp không được khuyến khích.
 
-Bây giờ cùng phân tích lỗi trên nó thông báo ra cái gì nào? chú ý là dòng số 2,3 và 4 chúng ta sẽ thấy nó báo là cái ông `malloc`, `__printf_chk` và `free` thì chưa có được định nghĩa. malloc và free thì chúng ta có sử dụng ở trong hàm `main()` thật, nhưng mà có cái ông `__printf_chk` thì trông lạ lẫm quá :))) Chúng ta có dùng ông thần này trong hàm `main()` đâu nhỉ? Thực ra nó có chức năng tương tự với  hàm `printf` mà chúng ta đã dùng và nó được được thêm vào bởi trình biên dịch và việc này chỉ có ở Linux, nếu bạn dùng `ld` ở trên Window thì sẽ không gặp cái này.
+Bây giờ cùng phân tích lỗi trên nó thông báo ra cái gì nào? chú ý là dòng số 2, 3 và 4 chúng ta sẽ thấy nó báo là 3 ông `malloc`, `__printf_chk` và `free` thì chưa có được định nghĩa. malloc và free thì chúng ta có sử dụng ở trong hàm `main()` thật, nhưng mà có cái ông `__printf_chk` thì trông lạ lẫm quá :))) Chúng ta có dùng ông thần này trong hàm `main()` đâu nhỉ? Thực ra nó có chức năng tương tự với  hàm `printf` mà chúng ta đã dùng và nó được được thêm vào bởi trình biên dịch và việc này chỉ có ở Linux, nếu bạn dùng `ld` ở trên Window thì sẽ không gặp cái này.
 
->Vì trong quá trình linking trên linux có đụng trường hợp này nên mình nêu ra như ví dụ. Còn bạn thắc mắc cái ông `__printf_chk` là cái gì? thì có thể đọc ở [đây](https://refspecs.linuxbase.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/libc---printf-chk-1.html "__printf_chk"). Nhưng mà có đọc cái này thì cũng nhớ quay lại đây đọc tiếp phần linking nữa nhá :)))
+>Vì trong quá trình linking trên Linux có đụng trường hợp này nên mình nêu ra như ví dụ, nếu có dịp sẽ có bài nói chi tiết hơn về việc biên dịch trên Linux. Còn bạn thắc mắc cái ông `__printf_chk` là cái gì? thì có thể đọc ở [đây](https://refspecs.linuxbase.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/libc---printf-chk-1.html "__printf_chk"). Nhưng mà có đọc cái này thì cũng nhớ quay lại đây đọc tiếp phần linking nữa nhá :)))
 
-Nhưng mà tóm gọn lại thì `ld` nó báo là nó không có tìm thấy mấy cái hàm trên, mà để `ld` nó tìm thấy được mấy cái hàm trên thì chúng ta cần cung cấp cho `ld` file object của mấy hàm trên thì nó mới tìm ra được. Điều này lại khá là rắc rối, vì vậy cách chạy trực tiếp bằng tay `ld` như thế này đúng là rất khó kăhn. Nhưng mà may mắn thay cho chúng ta khi trong các nền tảng họ nhà Unix thì hầu hết các trình biên dịch đều đã hỗ trợ chúng ta làm việc này. Vì thế nên chúng ta sẽ không cần chạy `ld` bằng tay nữa. Công việc bây giờ trở nên khá là đơn giản ví dụ sử dụng gcc để thực hiện liên kết như sau:
+Nhưng mà tóm gọn lại thì `ld` nó báo là nó không có tìm thấy mấy cái hàm trên, mà để `ld` nó tìm thấy được mấy cái hàm trên thì chúng ta cần cung cấp cho `ld` file object của mấy hàm trên thì nó mới tìm ra được. Điều này lại khá là rắc rối, vì vậy cách chạy trực tiếp bằng tay `ld` như thế này đúng là rất khó khăn. Nhưng mà may mắn thay cho chúng ta khi trong các nền tảng họ nhà Unix thì hầu hết các trình biên dịch đều đã hỗ trợ chúng ta làm việc này. Vì thế nên chúng ta sẽ không cần chạy `ld` bằng tay nữa. Công việc bây giờ trở nên khá là đơn giản ví dụ sử dụng gcc để thực hiện liên kết như sau:
 
 ```bash
 gcc main.o sortint.o
 ```
 
-Đấy, câu lệnh khá là đơn giản thôi nhỉ :V nếu chúng ta nghĩ quá trình linking cũng đơn giản như vậy thôi thì chúng ta đã đánh giá quá thấp nó rồi đấy. Việc này chỉ đơn giản khi chúng ta cứ phang gcc vào mà chạy, nhưng mà chỉ sử dụng `gcc` thì chúng ta vẫn chỉ biết xài `gcc` để chạy vậy thôi chứ chưa thực sự hiểu linking hoạt động ra sao?, làm sao để nó có thể liên kết được các file object?, làm sao mà lại ra được file thực thi cuối cùng???. Phần này tuy phức tạp vcl và cũng dài vcl nhưng lại rất hay và rất bổ ích đối với các anh em làm về embedded, đặc biệt là trong việc liên quan đến biên dịch bằng makefile và nạp file *hex* xuống kit. Vì vậy ở phần tiếp theo của bài viết này chúng ta sẽ tìm hiểu chi tiết về cách mà Linking làm việc để thực sự có thể làm chủ được quá trình biên dịch một chương trình C.
+>Thực ra là khi chạy với gcc thì nó cũng gọi đến `ld` thôi nhưng có cái khác đó là nó đã tự động thêm các đối số là các thư viện tĩnh,... vào giúp chúng ta luôn rồi. Nên là công việc này trở nên đơn giản là chạy  `ld` bằng tay hơn.
 
-### **Linking hoạt động như thế nào ?**
+Nếu chúng ta nghĩ quá trình linking cũng đơn giản như vậy thôi thì chúng ta đã đánh giá quá thấp nó rồi. Việc này chỉ đơn giản khi chúng ta cứ phang gcc vào mà chạy, nhưng mà chỉ sử dụng `gcc` thì chúng ta vẫn chỉ biết xài `gcc` để chạy vậy thôi chứ chưa thực sự hiểu linking hoạt động ra sao?, làm sao để nó có thể liên kết được các file object?, làm sao mà lại ra được file thực thi cuối cùng???. Phần này tuy phức tạp vcl và cũng dài vcl nhưng lại rất hay và rất bổ ích đối với các anh em làm về embedded, đặc biệt là trong việc liên quan đến biên dịch bằng makefile và nạp file *hex* xuống kit. Vì vậy ở phần tiếp theo của bài viết này chúng ta sẽ tìm hiểu chi tiết về cách mà Linking làm việc để thực sự có thể làm chủ được quá trình biên dịch một chương trình C.
 
 Để nhìn thấy được *linker* hoạt động như thế nào chúng ta cần phải biết được cách mà nó sử dụng các file object, mà để biết được cách nó sử dụng thì trước hết chúng ta cần biết được file object đang chứa nội dung gì?
 
