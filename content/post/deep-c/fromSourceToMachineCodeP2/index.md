@@ -3,7 +3,7 @@ title: Từ mã nguồn ra mã máy (Phần 2)
 subtitle: Trong phần trước chúng ta đã tìm hiểu về Preprocessing và Compilation tiếp theo ở bài viết này thì chúng ta sẽ tiếp tục tìm hiểu thêm 2 bước còn lại là Asemble và Linking.
 
 # Summary for listings and search engines
-summary: Ở trong chuỗi bài này thì chúng ta cùng nhau tìm hiểu về quá trình bắt đầu từ viết code C cho đến các bước Preprocessor, Compiler, Assemblers, Linker để rồi ra được 1 file thực thi cuối cùng. 
+summary: Trong phần trước chúng ta đã tìm hiểu về Preprocessing và Compilation tiếp theo ở bài viết này thì chúng ta sẽ tiếp tục tìm hiểu thêm 2 bước còn lại là Asemble và Linking.
 
 # Link this post with a project
 projects: []
