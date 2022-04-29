@@ -206,7 +206,7 @@ Ví dụ lại code trên bằng việc sử dụng `#pragma once` như sau:
 
 Đến đây cơ bản là cũng đủ cơ bản để chúng ta có thể làm việc với macro được rồi. Hẹn bạn đọc ở **Phần 3 Tản mạn về macro**.
 
-## **Nguồn**
+## **Nguồn tham khảo**
 
 - Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C 1st Edition - Kamran Amini (PDF Book)
 - <https://en.cppreference.com/w/c/preprocessor>

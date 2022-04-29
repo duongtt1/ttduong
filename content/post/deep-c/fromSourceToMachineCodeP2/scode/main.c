@@ -11,13 +11,13 @@ int main(){
     arr[3]=16;
     arr[4]=30;
 
-    sortInt(arr, DECREASE);
+    sortInt(arr,N_ARRAY, DECREASE);
 
     for (int i = 0; i < N_ARRAY; i++)
     {
         printf("%d", arr[i]);
     }
-    
+
     free(arr);
 
     return 0;

@@ -221,7 +221,7 @@ Một lợi ích khác nữa của AST đó là cho phép chúng ta có thể s�
 
 Như vậy thì chúng ta tạm gác lại bài này ở đây, nó đã quá dài rồi. Ở phần 2 chúng ta sẽ tìm hiểu tiếp về các bước còn lại đó là **Asemble** và **Linking**.
 
-## **Nguồn**
+## **Nguồn tham khảo**
 
 - Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C 1st Edition - Kamran Amini (PDF Book)
 - <https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation>

@@ -9,13 +9,13 @@ summary: Ở trong chuỗi bài này thì chúng ta cùng nhau tìm hiểu về 
 projects: []
 
 # Date published
-date: "2022-04-24T00:00:00Z"
+date: "2022-04-29T00:00:00Z"
 
 # Date updated
-lastmod: "2022-04-24T00:00:00Z"
+lastmod: "2022-04-29T00:00:00Z"
 
 # Is this an unpublished draft?
-draft: true
+draft: false
 
 # Show this page in the Featured widget?
 featured: false
@@ -77,9 +77,136 @@ Cũng như `as`, ở bước này thì chúng ta lại được các nền tản
 ld main.o sortint.o
 ```
 
-## **Nguồn**
+Và đây là kết quả:
+
+```bash
+.../bin/ld: warning: cannot find entry symbol _start; defaulting to 0000000000401000
+.../bin/ld: main.o: in function `main':
+main.c:(.text.startup+0x17): undefined reference to `malloc'
+.../bin/ld: main.c:(.text.startup+0x6b): undefined reference to `__printf_chk'
+.../bin/ld: main.c:(.text.startup+0x78): undefined reference to `free'
+```
+
+Các bạn thấy đấy, liên kết đã thất bại rồi. Tuy biết là lệnh nó như thế nhưng mà thực tế thì để chạy trực tiếp `ld` thì cũng không dễ dành cho lắm :))) đó là lý do vì sao ở phần assemble ở trên việc chạy `as` trực tiếp không được khuyến khích.
+
+Bây giờ cùng phân tích lỗi trên nó thông báo ra cái gì nào? chú ý là dòng số 2,3 và 4 chúng ta sẽ thấy nó báo là cái ông `malloc`, `__printf_chk` và `free` thì chưa có được định nghĩa. malloc và free thì chúng ta có sử dụng ở trong hàm `main()` thật, nhưng mà có cái ông `__printf_chk` thì trông lạ lẫm quá :))) Chúng ta có dùng ông thần này trong hàm `main()` đâu nhỉ? Thực ra nó có chức năng tương tự với  hàm `printf` mà chúng ta đã dùng và nó được được thêm vào bởi trình biên dịch và việc này chỉ có ở Linux, nếu bạn dùng `ld` ở trên Window thì sẽ không gặp cái này.
+
+>Vì trong quá trình linking trên linux có đụng trường hợp này nên mình nêu ra như ví dụ. Còn bạn thắc mắc cái ông `__printf_chk` là cái gì? thì có thể đọc ở [đây](https://refspecs.linuxbase.org/LSB_4.1.0/LSB-Core-generic/LSB-Core-generic/libc---printf-chk-1.html "__printf_chk"). Nhưng mà có đọc cái này thì cũng nhớ quay lại đây đọc tiếp phần linking nữa nhá :)))
+
+Nhưng mà tóm gọn lại thì `ld` nó báo là nó không có tìm thấy mấy cái hàm trên, mà để `ld` nó tìm thấy được mấy cái hàm trên thì chúng ta cần cung cấp cho `ld` file object của mấy hàm trên thì nó mới tìm ra được. Điều này lại khá là rắc rối, vì vậy cách chạy trực tiếp bằng tay `ld` như thế này đúng là rất khó kăhn. Nhưng mà may mắn thay cho chúng ta khi trong các nền tảng họ nhà Unix thì hầu hết các trình biên dịch đều đã hỗ trợ chúng ta làm việc này. Vì thế nên chúng ta sẽ không cần chạy `ld` bằng tay nữa. Công việc bây giờ trở nên khá là đơn giản ví dụ sử dụng gcc để thực hiện liên kết như sau:
+
+```bash
+gcc main.o sortint.o
+```
+
+Đấy, câu lệnh khá là đơn giản thôi nhỉ :V nếu chúng ta nghĩ quá trình linking cũng đơn giản như vậy thôi thì chúng ta đã đánh giá quá thấp nó rồi đấy. Việc này chỉ đơn giản khi chúng ta cứ phang gcc vào mà chạy, nhưng mà chỉ sử dụng `gcc` thì chúng ta vẫn chỉ biết xài `gcc` để chạy vậy thôi chứ chưa thực sự hiểu linking hoạt động ra sao?, làm sao để nó có thể liên kết được các file object?, làm sao mà lại ra được file thực thi cuối cùng???. Phần này tuy phức tạp vcl và cũng dài vcl nhưng lại rất hay và rất bổ ích đối với các anh em làm về embedded, đặc biệt là trong việc liên quan đến biên dịch bằng makefile và nạp file *hex* xuống kit. Vì vậy ở phần tiếp theo của bài viết này chúng ta sẽ tìm hiểu chi tiết về cách mà Linking làm việc để thực sự có thể làm chủ được quá trình biên dịch một chương trình C.
+
+### **Linking hoạt động như thế nào ?**
+
+Để nhìn thấy được *linker* hoạt động như thế nào chúng ta cần phải biết được cách mà nó sử dụng các file object, mà để biết được cách nó sử dụng thì trước hết chúng ta cần biết được file object đang chứa nội dung gì?
+
+>Tổng quan thì linker là 1 chương trình máy tính dùng để liên kết các file object thành một file thực thi cuối cùng. Ở phần trên thì nó chính là tools `ld` ấy.
+
+Câu trả lời cho câu hỏi ở đoạn trên thì chúng ta đã nói ở phần trước. file object chỉ đơn giản là chứa mã máy được biên dịch từ translation unit. Tuy nhiên các tập lệnh mã máy này không được đưa vào file object một cách ngẫu nghiên và chúng sẽ được nhóm lại thành cách section. Và các section mã máy này được gọi là *symbols*.
+
+Sự thật là trong file object có nhiều thứ khác chứ không phải chỉ có symbols, nhưng mà để giải thích cách hoạt động của linker thì tạm thời chúng ta chỉ cần quan tâm đến nó thôi. Bây giờ chúng ta sẽ cùng xem xét lại ví dụ sortint đã làm ở trên:
+
+```c
+...
+void swapInt(int *a, int *b){
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+void sortInt(int* a, int n, type_compare type){
+    for (int i = 0; i < n-1; i++)
+    {
+        for (int j = i+1; j < n; j++)
+        {
+            if (type == ASCENDING ? a[i] > a[j] : a[i] < a[j])
+            {
+                swapInt(&a[i], &a[j]);
+            }
+
+        }
+    }
+}
+```
+
+Chúng ta có thể thấy ở trong sortint.c có 2 hàm là `swapInt` và `sortInt` bây giờ chúng ta cùng xem các symbol có ở trong file object của sortint xem nó như nào, để làm được việc này thì chúng ta có tổ hợp các công cụ được Unix cung cấp sẵn đó là `nm`, `readelf`, `objdump`. Với tools `nm` sẽ cho phép chúng ta có thể nhìn thấy các symbol trong object file như sau:
+
+```bash
+nm sortint.o
+                  U _GLOBAL_OFFSET_TABLE_
+0000000000000010 T sortInt
+0000000000000000 T swapInt
+```
+
+Như kết quả trên chúng ta có thể trong file object có chứa 2 symbol trùng với tên hàm chúng ta đã định nghĩa trong file `sortint.c`, để rõ hơn nữa thì chúng ta thể sử dụng `readelf` để xem cả *symbol table* ở trong object file. Lệnh sử dụng readelf như sau:
+
+```bash
+readelf -s sortint.o
+
+Symbol table '.symtab' contains 11 entries:
+   Num:    Value          Size Type    Bind   Vis      Ndx Name
+     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS sortint.c
+     2: 0000000000000000     0 SECTION LOCAL  DEFAULT    1 
+     3: 0000000000000000     0 SECTION LOCAL  DEFAULT    3 
+     4: 0000000000000000     0 SECTION LOCAL  DEFAULT    4 
+     5: 0000000000000000     0 SECTION LOCAL  DEFAULT    6 
+     6: 0000000000000000     0 SECTION LOCAL  DEFAULT    7 
+     7: 0000000000000000     0 SECTION LOCAL  DEFAULT    5 
+     8: 0000000000000000     9 FUNC    GLOBAL DEFAULT    1 swapInt
+     9: 0000000000000010   191 FUNC    GLOBAL DEFAULT    1 sortInt
+    10: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND _GLOBAL_OFFS
+```
+
+Tất nhiên là chúng ta vẫn sẽ có 2 hàm `swapInt` và `sortInt` tương ứng với 2 hàm được định nghĩa bên mã nguồn C rồi. Nhưng mà *symbol table* cung cấp cho chúng ta nhiều thông tin hơn. Về chi tiết các symbol khác trong symbol table này thì có thể sẽ có 1 bài viết riêng để nói về nó vì nó cũng khá là dài :)))
+
+Tiếp theo nếu mà vẫn chưa thoả mãn, thì chúng ta có thể xem được cả các nhóm lệnh ASM tương ứng với các FUNC symbol luôn, bằng cách sử dụng `objdump` như ví dụ sau:
+
+```bash
+objdump -d sortint.o
+```
+
+Và kết quả:
+
+```asm
+
+sortint.o:     file format elf64-x86-64
+
+Disassembly of section .text:
+
+0000000000000000 <swapInt>:
+   0:   8b 07                   mov    (%rdi),%eax
+   2:   8b 16                   mov    (%rsi),%edx
+   4:   89 17                   mov    %edx,(%rdi)
+   6:   89 06                   mov    %eax,(%rsi)
+   8:   c3                      retq   
+   9:   0f 1f 80 00 00 00 00    nopl   0x0(%rax)
+
+0000000000000010 <sortInt>:
+  10:   41 57                   push   %r15
+  12:   89 f0                   mov    %esi,%eax
+  14:   41 56                   push   %r14
+  16:   41 55                   push   %r13
+  ....
+  ....
+  cc:   41 5f                   pop    %r15
+  ce:   c3                      retq  
+```
+
+Dựa trên những gì chúng ta đã làm ở trên có thể thấy mỗi *function symbol* tương ứng với một hàm đã được định nghĩa trong mã nguồn. Mỗi file object chỉ chứa 1 phần các chức năng (function,...) trong toàn bộ các chức năng của 1 chương trình hoàn chỉnh. Bằng cách tập hợp tất cả các symbol của các file object lại và kết hợp chúng lại thành 1 file thực thi hoàn chỉnh thì Linker đã hoàn thành được công việc của mình.
+
+>Cái phần sử dụng `nm`, `readelf` hay `objdump` là những phần mình show ra để bạn đọc hiểu trong file object nó như thế nào nhằm mục đích giải thích cho việc Linker nó dựa vào cái gì để thực hiện việc liên kết. Chứ không đó không phải các bước thực hiện của Linker :))) Nếu bạn muốn tìm hiểu kỹ lưỡng hơn về việc Linker liên kết các file object và sắp xếp các tập lệnh trên địa chỉ bộ nhớ như thế nào thì có thể xem thêm ở [video này](https://youtu.be/oXk87NRTL1Y).
+
+Như vậy là bước cuối cùng cũng đã xong, Hy vọng là qua bài viết này các bạn có cái nhìn bao quát hơn về C và cụ thể là quá trình biên dịch 1 chương trình C. Còn một số vấn đề liên quan đến phần Linking này nữa nhưng mà mình xin tạm dừng bài viết ở đây vì nó cũng dài rồi. Sau này nếu có thời gian trống chúng ta sẽ cùng nhau thảo luận thêm về các vấn đề này.
+
+## **Nguồn tham khảo**
 
 - Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C 1st Edition - Kamran Amini (PDF Book)
-- <https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation>
 - <http://www.chiark.greenend.org.uk/doc/cpp-4.3-doc/cppinternals.html>
 - <http://icps.u-strasbg.fr/~pop/gcc-ast.html>
+- <https://youtu.be/oXk87NRTL1Y>

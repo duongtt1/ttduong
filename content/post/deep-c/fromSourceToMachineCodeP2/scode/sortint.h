@@ -8,7 +8,7 @@ typedef enum {
 } type_compare;
 
 // Function declaration
-void swapInt(int *a, int *b);
-void sortInt(int*, type_compare);
+void swapInt(int *a,int *b);
+void sortInt(int*, int n, type_compare);
 
 #endif

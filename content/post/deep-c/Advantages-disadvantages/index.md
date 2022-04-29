@@ -68,7 +68,7 @@ Còn 1 ứng dụng phổ biến nữa của macro đó là *DSLs*. *Microsoft M
 
 Qua các thảo luận trên thì có thể thấy macro tuy có nhiều ưu điểm nhưng khi sử dụng chúng ta cần xem xét cẩn thận tuỳ vào từng trường hợp cụ thể. Nếu quá lạm dụng macro có thể gây ra nhiều vấn đề khó khăn không chỉ cho bạn và còn khó khăn cho cả đồng đội của bạn nữa.
 
-## **Nguồn**
+## **Nguồn tham khảo**
 
 - Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C 1st Edition - Kamran Amini (PDF Book)
 - <https://en.cppreference.com/w/c/preprocessor>

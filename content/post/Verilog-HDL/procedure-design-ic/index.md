@@ -91,6 +91,6 @@ Kiểm tra thông thường là quá trình kiểm tra những đặc tính bấ
 
 >Vì bài viết cũng khá là dài rồi nên các khâu phía sau chúng ta sẽ cùng nhau tìm hiểu tiếp ở phần 2
 
-## **Nguồn**
+## **Nguồn tham khảo**
 
 - Giáo trình ngôn ngữ mô tả phần cứng Verilog ĐH CNTT - ĐHQG HCM

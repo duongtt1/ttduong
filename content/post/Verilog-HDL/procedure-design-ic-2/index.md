@@ -90,6 +90,6 @@ Chúng ta có thể thực hiện mô phỏng trên các netlist này và quá t
 
 Bước cuối cùng trong quy trình thiết kế dựa trên Verilog đó là tạo ra phần cứng thực sự cho mạch thiết kế. Bước này có thể tạo ra một netlist dùng để sản xuất ASIC, một chương trình để nạp vào FPLD, hay một mạch in cho mạch IC.
 
-## **Nguồn**
+## **Nguồn tham khảo**
 
 - Giáo trình ngôn ngữ mô tả phần cứng Verilog ĐH CNTT - ĐHQG HCM
