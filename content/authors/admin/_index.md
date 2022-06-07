@@ -10,8 +10,8 @@ role: Embedded Software Developer
 
 # Organizations/Affiliations
 organizations:
-- name: FPT Global Automotive
-  url: "https://www.fpt-software.com/industries/automotive/"
+- name: UIT - VNUHCM
+  url: "https://www.uit.edu.vn/"
 
 # Short bio (displayed in user profile at end of posts)
 bio: "Tôi có 2 ước mơ. Một là gia đình hạnh phúc Hai là đất nước hùng cường"
