@@ -42,7 +42,7 @@ categories:
 
 ## **Variadic macros**
 
-Tiếp theo chúng ta cùng nhau đi tìm hiểu tiếp về *Variadic macros*, nó cũng là macro thôi nhưng mà điểm hay ho của nó đó là nó có thể nhận vào 1 số lượng đối số không nhất định. Có thể là 2 đối số cũng có thể là 3 hoặc cũng có thể là 8, nhận vào bao nhiêu là tuỳ thuộc vào người sử dụng nó. Cũng nhờ tính chất chất này mà nó rất hữu dụng khi chúng ta cần định nghĩa các macro mà chưa biết được số lượng tham số truyền vào hoặc là số lượng tham số có thể thay đổi tuỳ từng trường hợp. Đoạn code dưới đây là 1 ví dụ:
+Tiếp theo chúng ta cùng nhau đi tìm hiểu tiếp về *Variadic macros*, nó cũng là macro thôi nhưng mà điểm hay ho của nó đó là nó có thể nhận vào 1 số lượng đối số không nhất định. Có thể là 2 đối số cũng có thể là 3 hoặc cũng có thể là N, nhận vào bao nhiêu là tuỳ thuộc vào người sử dụng nó. Cũng nhờ tính chất chất này mà nó rất hữu dụng khi chúng ta cần định nghĩa các macro mà chưa biết được số lượng tham số truyền vào hoặc là số lượng tham số có thể thay đổi tuỳ từng trường hợp. Đoạn code dưới đây là 1 ví dụ:
 
 ```c
 #include <stdio.h>

@@ -69,7 +69,6 @@ Như vậy là chúng ta đã có 2 file object đó là `main.o` và `sortint.o
 ## **Linking**
 
 Cũng như `as`, ở bước này thì chúng ta lại được các nền tảng họ nhà Unix cung cấp sẵn 1 tools mặc định đó là `ld` để dùng cho việc liên kết các file object thành file thực thi cuối cùng. Ở bước trước thì chúng ta đã có sẵn 2 file `main.o` và `sortint.o` nên bây giờ chúng ta sẽ tiến hành liên kết 2 file này lại theo lệnh sau:
-`
 
 ```bash
 ld main.o sortint.o
@@ -99,7 +98,7 @@ gcc main.o sortint.o
 
 >Thực ra là khi chạy với gcc thì nó cũng gọi đến `ld` thôi nhưng có cái khác đó là nó đã tự động thêm các đối số là các thư viện tĩnh,... vào giúp chúng ta luôn rồi. Nên là công việc này trở nên đơn giản là chạy  `ld` bằng tay hơn.
 
-Nếu chúng ta nghĩ quá trình linking cũng đơn giản như vậy thôi thì chúng ta đã đánh giá quá thấp nó rồi. Việc này chỉ đơn giản khi chúng ta cứ phang gcc vào mà chạy, nhưng mà chỉ sử dụng `gcc` thì chúng ta vẫn chỉ biết xài `gcc` để chạy vậy thôi chứ chưa thực sự hiểu linking hoạt động ra sao?, làm sao để nó có thể liên kết được các file object?, làm sao mà lại ra được file thực thi cuối cùng???. Phần này tuy phức tạp vcl và cũng dài vcl nhưng lại rất hay. Vì vậy ở phần tiếp theo của bài viết này chúng ta sẽ tìm hiểu chi tiết về cách mà Linking làm việc để thực sự có thể làm chủ được quá trình biên dịch một chương trình C.
+Nếu chúng ta nghĩ quá trình linking cũng đơn giản như vậy thôi thì chúng ta đã đánh giá quá thấp nó rồi. Việc này chỉ đơn giản khi chúng ta cứ phang gcc vào mà chạy, nhưng mà chỉ sử dụng `gcc` thì chúng ta vẫn chỉ biết xài `gcc` để chạy vậy thôi chứ chưa thực sự hiểu linking hoạt động ra sao?, làm sao để nó có thể liên kết được các file object?, làm sao mà lại ra được file thực thi cuối cùng???. Phần này tuy phức tạp vcl và cũng dài vcl nhưng lại có nhiều chỗ thú vị. Vì vậy ở phần tiếp theo của bài viết này chúng ta sẽ tìm hiểu thêm một chút nữa về mà Linking.
 
 Để nhìn thấy được *linker* hoạt động như thế nào chúng ta cần phải biết được cách mà nó sử dụng các file object, mà để biết được cách nó sử dụng thì trước hết chúng ta cần biết được file object đang chứa nội dung gì?
 

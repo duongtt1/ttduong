@@ -111,7 +111,7 @@ Như đoạn code trên chúng ta thấy `SUM` không phải là 1 hàm, nó ch�
 
 Nếu bạn sử dụng `gcc` hoặc `clang` để build thì có thể thêm tham số `-E` vào lệnh build để có thể xem mã nguồn được chỉnh sửa sau khi qua bước tiền xử lý như hình dưới:
 
->Vì chúng ta có `#include <stdio.h>` nên sau khi tiền xử lý mã nguồn chính sẽ có cả nội dung của file này ở trên đầu, phần mã nguồn chính trong hàm main của chúng ta sẽ xuất hiện ở dưới cùng`
+>Vì chúng ta có `#include <stdio.h>` nên sau khi tiền xử lý mã nguồn chính sẽ có cả nội dung của file này ở trên đầu, phần mã nguồn chính trong hàm main của chúng ta sẽ xuất hiện ở dưới cùng.
 
 ![Phần đầu khi chạy gcc!](./images/option-e.PNG "Phần đầu khi chạy lệnh gcc -e")
 
