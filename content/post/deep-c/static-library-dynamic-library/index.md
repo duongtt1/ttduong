@@ -1,3 +1,43 @@
+---
+title: Thư viện tĩnh và Thư viện động
+subtitle: Thư viện trong C/C++ được chia làm 2 loại là Static Libraries và Dynamic Libraries hay Shared Libraries.
+
+# Summary for listings and search engines
+summary: Thư viện trong C/C++ được chia làm 2 loại là Static Libraries và Dynamic Libraries hay Shared Libraries. 
+
+# Link this post with a project
+projects: []
+
+# Date published
+date: "2022-06-21T00:00:00Z"
+
+# Date updated
+lastmod: "2022-06-21T00:00:00Z"
+
+# Is this an unpublished draft?
+draft: false
+
+# Show this page in the Featured widget?
+featured: false
+
+# Featured image
+# Place an image named `featured.jpg/png` in this page's folder and customize its options here.
+image:
+  caption: 'Image credit: [**imgur.com**](https://i.imgur.com/cdYTRZi.jpeg)'
+  focal_point: ""
+  placement: 2
+  preview_only: false
+
+authors:
+- admin
+
+tags:
+- C
+
+categories:
+- C
+---
+
 ## **Static libraries**
 
 *Static library* hay còn gọi tiếng việt là thư viện tĩnh đơn giản chỉ là một archive file được tạo ra từ các object file thông qua `ar` tools. Những file thư viện tĩnh này có thể được linked với các objects file khác để tạo thành 1 file thư viện khác hoặc 1 file thực thi.
