@@ -223,7 +223,7 @@ Như vậy thì chúng ta tạm gác lại bài này ở đây, nó đã quá d�
 
 ## **Nguồn tham khảo**
 
-- Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C 1st Edition - Kamran Amini (PDF Book)
+- Extreme C - Kamran Amini (PDF Book)
 - <https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation>
 - <http://www.chiark.greenend.org.uk/doc/cpp-4.3-doc/cppinternals.html>
 - <http://icps.u-strasbg.fr/~pop/gcc-ast.html>

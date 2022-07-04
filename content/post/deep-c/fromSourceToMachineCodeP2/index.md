@@ -203,7 +203,7 @@ Như vậy là bước cuối cùng cũng đã xong, Hy vọng là qua bài vi�
 
 ## **Nguồn tham khảo**
 
-- Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C 1st Edition - Kamran Amini (PDF Book)
+- Extreme C - Kamran Amini (PDF Book)
 - <http://www.chiark.greenend.org.uk/doc/cpp-4.3-doc/cppinternals.html>
 - <http://icps.u-strasbg.fr/~pop/gcc-ast.html>
 - <https://youtu.be/oXk87NRTL1Y>

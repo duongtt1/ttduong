@@ -166,6 +166,6 @@ Như vậy là coi như chúng ta đã đi xong các bước cơ bản để t�
 
 ## Nguồn tham khảo
 
-- Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C 1st Edition - Kamran Amini (PDF Book)
+- Extreme C - Kamran Amini (PDF Book)
 - <https://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html>
 - <https://stackoverflow.com/questions/29714300/what-does-the-rcs-option-in-ar-do>

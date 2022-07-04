@@ -70,5 +70,5 @@ Qua các thảo luận trên thì có thể thấy macro tuy có nhiều ưu đi
 
 ## **Nguồn tham khảo**
 
-- Extreme C: Taking you to the limit in Concurrency, OOP, and the most advanced capabilities of C 1st Edition - Kamran Amini (PDF Book)
+- Extreme C - Kamran Amini (PDF Book)
 - <https://en.cppreference.com/w/c/preprocessor>
