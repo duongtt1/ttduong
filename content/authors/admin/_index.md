@@ -14,7 +14,7 @@ organizations:
   url: "https://www.uit.edu.vn/"
 
 # Short bio (displayed in user profile at end of posts)
-bio: "Live a few years of your life like most people won't so that you can spend the rest of your life like most people can't"
+bio: "Tôi có 2 ước mơ. Một là gia đình hạnh phúc Hai là đất nước hùng cường"
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
