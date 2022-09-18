@@ -1,6 +1,6 @@
 ---
 title: Pointer
-subtitle: Con trỏ là một khái niệm cơ bản ở trong lập trình C/C++, để trở thành một lập trình viên C/C++ giỏi thì việc hiểu rõ về con trỏ là một yêu cầu bắt buộc.
+subtitle: 
 
 # Summary for listings and search engines
 summary: Con trỏ là một khái niệm cơ bản ở trong lập trình C/C++, để trở thành một lập trình viên C/C++ giỏi thì việc hiểu rõ về con trỏ là một yêu cầu bắt buộc. Ở bài viết lần này chúng ta sẽ cùng đi tìm hiểu các khái niệm cơ bản của con trỏ.
