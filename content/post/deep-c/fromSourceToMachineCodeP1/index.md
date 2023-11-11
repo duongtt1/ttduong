@@ -130,7 +130,7 @@ Trong phạm vi bài viết chúng ta sẽ tập trung chính vào quá trình c
 
 ## **Preprocessing**
 
-Quá trình Preprocessing chúng ta đã có dịp đi tìm hiểu ở 3 bài viết trước, nếu bạn chưa đọc thì có thể đọc lại ở [đây](https://kitaro.fun/post/deep-c/preprocessing/ "Tiền xử lý"). Có một điểm mà mình chưa đề cập đến ở các bài trước đó chính là Bộ tiền xử lý đó là nó cần 1 [Parser](https://en.wikipedia.org/wiki/Parsing#Parser "Parser") để phân tích cú pháp của file mã nguồn đầu vào rồi sau đó mới đến các bước khác trong quá trình tiền xử lý.
+Quá trình Preprocessing chúng ta đã có dịp đi tìm hiểu ở 3 bài viết trước, nếu bạn chưa đọc thì có thể đọc lại ở [đây](https://kitaro.tech/post/deep-c/preprocessing/ "Tiền xử lý"). Có một điểm mà mình chưa đề cập đến ở các bài trước đó chính là Bộ tiền xử lý đó là nó cần 1 [Parser](https://en.wikipedia.org/wiki/Parsing#Parser "Parser") để phân tích cú pháp của file mã nguồn đầu vào rồi sau đó mới đến các bước khác trong quá trình tiền xử lý.
 
 >Việc phân tích cú pháp của file mã nguồn đầu vào ở đây chính là việc đi tìm ra các chỉ thị (directives) ở trong file mã nguồn input.
 
@@ -223,7 +223,7 @@ Như vậy thì chúng ta tạm gác lại bài này ở đây, nó đã quá d�
 
 ## **Nguồn tham khảo**
 
-- Extreme C - Kamran Amini (PDF Book)
+
 - <https://www.toptal.com/c-plus-plus/c-plus-plus-understanding-compilation>
 - <http://www.chiark.greenend.org.uk/doc/cpp-4.3-doc/cppinternals.html>
 - <http://icps.u-strasbg.fr/~pop/gcc-ast.html>

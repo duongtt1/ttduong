@@ -166,6 +166,6 @@ Như vậy là coi như chúng ta đã đi xong các bước cơ bản để t�
 
 ## Nguồn tham khảo
 
-- Extreme C - Kamran Amini (PDF Book)
+
 - <https://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html>
 - <https://stackoverflow.com/questions/29714300/what-does-the-rcs-option-in-ar-do>

@@ -208,5 +208,5 @@ Ví dụ lại code trên bằng việc sử dụng `#pragma once` như sau:
 
 ## **Nguồn tham khảo**
 
-- Extreme C - Kamran Amini (PDF Book)
+
 - <https://en.cppreference.com/w/c/preprocessor>

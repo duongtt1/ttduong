@@ -218,5 +218,5 @@ Thật lòng mà nói thì phần này là 1 phần tương đối khó để t�
 
 ## **Nguồn tham khảo**
 
-- Extreme C - Kamran Amini (PDF Book)
+
 - <https://stackoverflow.com/questions/12122446/how-does-c-linking-work-in-practice>

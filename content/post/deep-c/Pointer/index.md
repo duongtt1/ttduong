@@ -142,4 +142,4 @@ Ví dụ trên chỉ là 1 ví dụ đơn giản cho Dangling pointers còn rấ
 
 ## **Nguồn tham khảo**
 
-- Extreme C - Kamran Amini (PDF Book)
+

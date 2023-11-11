@@ -220,5 +220,5 @@ Trên đây chỉ là những ví dụ cơ bản nhằm mục đích giới thi�
 
 ## **Nguồn tham khảo**
 
-- Extreme C - Kamran Amini (PDF Book)
+
 - <https://en.cppreference.com/w/c/preprocessor>

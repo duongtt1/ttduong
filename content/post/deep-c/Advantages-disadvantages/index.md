@@ -70,5 +70,4 @@ Qua các thảo luận trên thì có thể thấy macro tuy có nhiều ưu đi
 
 ## **Nguồn tham khảo**
 
-- Extreme C - Kamran Amini (PDF Book)
 - <https://en.cppreference.com/w/c/preprocessor>
