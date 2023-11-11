@@ -66,6 +66,6 @@ Verilog đã giới thiệu các kiểu dữ liệu hai trạng thái mới (two
 
 ### **Kiểu dữ liệu 2 trạng thái số nguyên**
 
-## **Nguồn tham khảo**
+<!-- ## **Nguồn tham khảo**
 
-- <https://www.asic-world.com/verilog/verilog_one_day.html>
+- <https://www.asic-world.com/verilog/verilog_one_day.html> -->

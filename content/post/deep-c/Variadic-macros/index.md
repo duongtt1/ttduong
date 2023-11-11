@@ -205,8 +205,8 @@ Ví dụ lại code trên bằng việc sử dụng `#pragma once` như sau:
 ```
 
 Đến đây cơ bản là cũng đủ cơ bản để chúng ta có thể làm việc với macro được rồi. Hẹn bạn đọc ở **Phần 3 Tản mạn về macro**.
-
+<!-- 
 ## **Nguồn tham khảo**
 
 
-- <https://en.cppreference.com/w/c/preprocessor>
+- <https://en.cppreference.com/w/c/preprocessor> -->

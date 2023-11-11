@@ -109,6 +109,6 @@ Các thiết kế sử dụng Register-Transfer Level xác định các đặc t
 
 Trong mức logic, các đặc tính của hệ thống được mô tả bằng các liên kết logic và các thuộc tính thời gian của chúng. Tất cả các tín hiệu đều là tín hiệu rời rạc, Chúng chỉ có thể có các giá trị logic xác định ('0', '1', 'X', 'Z'). Các hoạt động có thể sử dụng là các nguyên thủy logic được xác định trước (AND, OR, NOT,...). *Sử dụng mô hình mức cổng có thể không phải là một ý tưởng hay cho bất kỳ mức thiết kế logic nào. Mã cấp cổng được tạo bởi các công cụ như công cụ tổng hợp và danh sách mạng này được sử dụng để mô phỏng cấp cổng và cho chương trình phụ trợ.*
 
-## **Nguồn tham khảo**
+<!-- ## **Nguồn tham khảo**
 
-- <https://www.asic-world.com/verilog/verilog_one_day.html>
+- <https://www.asic-world.com/verilog/verilog_one_day.html> -->

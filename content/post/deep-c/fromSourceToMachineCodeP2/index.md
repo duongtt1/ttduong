@@ -201,9 +201,9 @@ Dựa trên những gì chúng ta đã làm ở trên có thể thấy mỗi *fu
 
 Như vậy là bước cuối cùng cũng đã xong, Hy vọng là qua bài viết này các bạn có cái nhìn bao quát hơn về C và cụ thể là quá trình biên dịch 1 chương trình C. Còn một số vấn đề liên quan đến phần Linking này nữa nhưng mà mình xin tạm dừng bài viết ở đây vì nó cũng dài rồi. Sau này nếu có thời gian trống chúng ta sẽ cùng nhau thảo luận thêm về các vấn đề này.
 
-## **Nguồn tham khảo**
+<!-- ## **Nguồn tham khảo**
 
 
 - <http://www.chiark.greenend.org.uk/doc/cpp-4.3-doc/cppinternals.html>
 - <http://icps.u-strasbg.fr/~pop/gcc-ast.html>
-- <https://youtu.be/oXk87NRTL1Y>
+- <https://youtu.be/oXk87NRTL1Y> -->

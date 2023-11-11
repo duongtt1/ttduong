@@ -140,6 +140,6 @@ Như đoạn code trên chúng ta có thể thấy là chúng ta định nghĩa 
 
 Ví dụ trên chỉ là 1 ví dụ đơn giản cho Dangling pointers còn rất nhiều trường hợp nữa là nên khi sử dụng con trỏ thường sẽ có nhiều vấn đề liên quan đến bộ nhớ nên mà các bạn và cả mình nữa nên cẩn thận trong việc sử dụng.
 
-## **Nguồn tham khảo**
+<!-- ## **Nguồn tham khảo** -->
 
 

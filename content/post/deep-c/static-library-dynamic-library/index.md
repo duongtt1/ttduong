@@ -164,8 +164,8 @@ Và lỗi.... Như đã nói ở trên dynamic libraries sẽ bị phụ thuộc
 
 Như vậy là coi như chúng ta đã đi xong các bước cơ bản để tạo ra và sử dụng thư viện động rồi. Ngoài cách load tự động như vậy thì chúng ta cũng có thể load theo cách thủ công. Vì bài viết cũng dài rồi nên mình để link bài viết tham khảo ở [*đây*](https://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html). Nếu bạn đọc muốn tìm hiểu thêm có thể đọc qua. Hẹn bạn đọc ở một lúc nào đó rảnh thì lại tìm hiểu tiếp ^^
 
-## Nguồn tham khảo
+<!-- ## Nguồn tham khảo
 
 
 - <https://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html>
-- <https://stackoverflow.com/questions/29714300/what-does-the-rcs-option-in-ar-do>
+- <https://stackoverflow.com/questions/29714300/what-does-the-rcs-option-in-ar-do> -->

@@ -216,7 +216,7 @@ Chúng sẽ cần để ý đến kết quả trên có tới tận 2 symbol tab
 
 Thật lòng mà nói thì phần này là 1 phần tương đối khó để tưởng tượng, nếu mà giải thích bằng chữ thôi thì thật khó để hình dung, đấy là chưa kể câu văn của mình nó lại lũng cũng nữa nhưng mà mình hy vọng là qua từng bước chạy như trên bạn đọc có thể phần nào hình dung ra được cách mà linker làm việc. Sắp tới chúng ta sẽ đi tìm hiểu về **Static library và Dynamic library** nội dung của phần tới thì vẫn sẽ có phần liên quan đến bài này, đấy là mình dự định như thế chứ còn bao giờ viết tiếp thì mình cũng chưa rõ :))))
 
-## **Nguồn tham khảo**
+<!-- ## **Nguồn tham khảo**
 
 
-- <https://stackoverflow.com/questions/12122446/how-does-c-linking-work-in-practice>
+- <https://stackoverflow.com/questions/12122446/how-does-c-linking-work-in-practice> -->
